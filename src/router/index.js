@@ -3,18 +3,6 @@ import Vue from "vue"
 // 引入路由 vue-router
 import VueRouter from 'vue-router'
 
-// 组件的引入
-import Home from '../components/Home.vue'
-import User from '../components/user/Default.vue'
-import UserList from '../components/user/List.vue'
-import UserAdd from '../components/user/Add.vue'
-
-import Order from '../components/Order.vue'
-import Goods from '../components/Goods.vue'
-import Reg from '../components/Reg.vue'
-import Login from '../components/Login.vue'
-import NotFound from '../components/NotFound.vue'
-
 
 // 调用Vue.use手动安装，之后才能在实例中通过this.$route访问
 Vue.use(VueRouter);
@@ -32,11 +20,11 @@ const router = new VueRouter({
         },
         {
             path: '/home',
-            component: Home
+            component:()=>import("../components/Home.vue")
         },
         {
             path: '/user',
-            component: User,
+            component: ()=>import("../components/user/Default.vue"),
             // 二级导航
             children: [
                 // 进入用户管理页面直接跳到用户列表
@@ -45,31 +33,31 @@ const router = new VueRouter({
                     redirect: 'list'
                 }, {
                     path: 'add',
-                    component: UserAdd
+                    component: ()=>import("../components/user/Add.vue")
                 }, {
                     path: 'list',
-                    component: UserList
+                    component: ()=>import("../components/user/List.vue")
                 }]
         },
         {
             path: '/order',
-            component: Order
+            component:()=>import("../components/Order.vue")
         },
         {
             path: '/goods',
-            component: Goods
+            component:()=>import("../components/Goods.vue")
         },
         {
             path: '/login',
-            component: Login
+            component:()=>import("../components/Login.vue")
         },
         {
             path: '/reg',
-            component: Reg
+            component:()=>import("../components/Reg.vue")
         },
         {
             path: '/404',
-            component: NotFound
+            component:()=>import("../components/NotFound.vue")
         },
 
         // 404页面效果
