@@ -1,5 +1,7 @@
 <template>
-  <div>Order</div>
+  <div>
+    <router-view />
+  </div>
 </template>
 <script>
 export default {};

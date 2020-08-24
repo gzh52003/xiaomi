@@ -1,5 +1,5 @@
 <template>
-  <div>Order</div>
+  <div>商品搜索</div>
 </template>
 <script>
 export default {};

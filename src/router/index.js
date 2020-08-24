@@ -1,135 +1,192 @@
-import Vue from 'vue'
+import Vue from 'vue';
+
+//1.引入Vue-Router
 import VueRouter from 'vue-router'
 
-// 用户管理
-import user from '../pages/user/index.vue'
-import adduser from '../pages/user/addUser.vue'
-import removeuser from '../pages/user/removeUser.vue'
-import userlimits from '../pages/user/userLimits.vue'
-import userlist from '../pages/user/userList.vue'
-import edituser from '../pages/user/editUser.vue'
+//用户管理
+import User from '../pages/user/Default.vue'
+import UserList from '../pages/user/List.vue'
+import UserAdd from '../pages/user/Add.vue'
+import UserEdit from '../pages/user/Edit.vue'
+import UserDelete from '../pages/user/delete.vue'
+import UserPower from '../pages/user/power.vue'
 
-// 商品管理
-import goods from '../pages/goods/index.vue'
-import addgoods from '../pages/goods/addGoods.vue'
-import removegoods from '../pages/goods/removeGoods.vue'
-import goodsdesc from '../pages/goods/goodsDesc.vue'
-import goodslist from '../pages/goods/goodsList.vue'
-import editgoods from '../pages/goods/editGoods.vue'
-import goodsSearch from '../pages/goods/goodsSearch.vue'
+//商品管理
+import Goods from '../pages/goods/Default.vue'
+import GoodsAdd from '../pages/goods/Add.vue'
+import GoodsList from '../pages/goods/List.vue'
+import GoodsDelete from '../pages/goods/Delete.vue'
+import GoodsDeleteMore from '../pages/goods/DeleteMore.vue'
+import GoodsSearch from '../pages/goods/Search.vue'
+import GoodsEdit from '../pages/goods/Edit.vue'
 
-import order from '../pages/order/index.vue'
-import addorder from '../pages/order/addOrder.vue'
-import orderlist from '../pages/order/orderList.vue'
-import removeorder from '../pages/order/removeOrder.vue'
+//商品管理下的分类管理
+import Classification from '../pages/goods/classification/Default.vue'
+import ClassificationAdd from '../pages/goods/classification/Add.vue'
+import ClassificationList from '../pages/goods/classification/List.vue'
+import ClassificationDelete from '../pages/goods/classification/Delete.vue'
+import ClassificationEdit from '../pages/goods/classification/Edit.vue'
 
-import index from '../pages/index.vue'
+//订单管理
+import Order from '../pages/order/Default.vue'
+import OrderAdd from '../pages/order/Add.vue'
+import OrderList from '../pages/order/List.vue'
+import OrderDelete from '../pages/order/Delete.vue'
+
+import Home from '../pages/Home.vue'
+// import Order from '../pages/Order.vue'
+// import Goods from '../pages/Goods.vue'
+import Reg from '../pages/reg/index.vue'
+import Login from '../pages/Login/index.vue'
 import NotFound from '../pages/NotFound.vue'
 
+//2.使用vue-router
+Vue.use(VueRouter);
 
-
-Vue.use(VueRouter)
-
-// 实例化 vuerouter 并配置参数
+//3.实例化router并配置参数
 const router = new VueRouter({
+    // mode:'history',//一般上线后改为history路由（需要额外配置服务器）
     routes: [{
-            path: '/',
-            redirect: '/index' // 重定向
-        }, {
-            path: '/goods',
-            component: goods,
-            children: [{
-                    path: '',
-                    redirect: "list"
-                }, {
-                    path: "list",
-                    component: goodslist
-                },
-                {
-                    path: "add",
-                    component: addgoods
-                }, {
-                    path: "remove",
-                    component: removegoods
-                },
-                {
-                    path: "edit",
-                    component: editgoods
-                },
-                {
-                    path: "desc",
-                    component: goodsdesc
-                }, {
-                    path: "list",
-                    component: goodslist
-                },
-                {
-                    path: "goodsSearch",
-                    component: goodsSearch
-                }
-            ]
-
-        }, {
-            path: '/user',
-            component: user,
-            children: [{
-                    path: '',
-                    redirect: "list"
-                }, {
-                    path: "list",
-                    component: userlist
-                },
-                {
-                    path: "add",
-                    component: adduser
-                }, {
-                    path: "remove",
-                    component: removeuser
-                },
-                {
-                    path: "edit",
-                    component: edituser
-                },
-                {
-                    path: "limits",
-                    component: userlimits
-                }, {
-                    path: "list",
-                    component: userlist
-                }
-            ]
-        }, {
-            path: '/order',
-            component: order,
-            children: [{
-                    path: '',
-                    redirect: "list"
-                }, {
-                    path: "list",
-                    component: orderlist
-                },
-                {
-                    path: "add",
-                    component: addorder
-                }, {
-                    path: "remove",
-                    component: removeorder
-                },
-            ]
-        }, {
-            path: '/index',
-            component: index
-        }, {
-            path: '/404',
-            component: NotFound
+            path: '/', // /->/home
+            component: Home
         },
         {
-            // 路由 检索时， 从上往下， 如果上面的适配了， 就会显示对
-            // 应内容， 这里通配 * 相当于过滤了上面的路由
-            path: '*',
-            redirect: '/404'
-        }
+            path: '/home',
+            component: Home,
+            children: [{
+                    path: '/user',
+                    component: User,
+                    children: [
+                        //进入用户管理页面直接跳到用户列表
+                        {
+                            path: '',
+                            redirect: 'list'
+                        }, {
+                            path: 'add',
+                            component: UserAdd
+                        }, {
+                            name: 'list',
+                            path: 'list',
+                            component: UserList
+                        }, {
+                            name: 'userEdit',
+                            //可以通过name来跳转页面
+                            path: 'edit/:id',
+                            //通过：id来传参
+                            component: UserEdit
+                            //用户编辑
+                        }, {
+                            // name: 'userDelete',
+                            path: 'delete',
+                            component: UserDelete
+                        }, {
+                            path: 'power',
+                            component: UserPower
+                        }
+                    ]
+                },
+                {
+                    path: '/order',
+                    component: Order,
+                    children: [
+                        //进入订单管理页面直接跳到订单列表
+                        {
+                            path: '/',
+                            redirect: 'list'
+                        }, {
+                            path: 'add',
+                            component: OrderAdd
+                        },
+                        {
+                            path: 'list',
+                            component: OrderList
+                        },
+                        {
+                            path: 'delete',
+                            component: OrderDelete
+                        },
+                    ]
+                },
+                {
+                    path: '/goods',
+                    component: Goods,
+                    children: [{
+                            path: '/',
+                            redirect: 'list'
+                        },
+                        {
+                            path: 'list',
+                            component: GoodsList
+                        },
+                        {
+                            path: 'add',
+                            component: GoodsAdd
+                        },
+                        {
+                            path: 'delete',
+                            component: GoodsDelete
+                        },
+                        {
+                            path: 'deletemore',
+                            component: GoodsDeleteMore
+                        },
+                        {
+                            path: 'search',
+                            component: GoodsSearch
+                        },
+                        {
+                            path: 'edit',
+                            component: GoodsEdit
+                        },
+                        {
+                            path: 'classification',
+                            component: Classification,
+                            children: [{
+                                    path: 'add',
+                                    component: ClassificationAdd
+                                },
+                                {
+                                    path: 'list',
+                                    component: ClassificationList
+                                },
+                                {
+                                    path: 'delete',
+                                    component: ClassificationDelete
+                                },
+                                {
+                                    path: 'edit',
+                                    component: ClassificationEdit
+                                }
+                            ]
+                        },
+                    ]
+                },
+
+                {
+                    path: '/404',
+                    component: NotFound,
+                },
+
+                //404页面效果
+                {
+                    path: '*',
+                    redirect: '/404'
+                    //除了有设置的路径之外所有路径都自动跳转到404
+                }
+            ],
+        },
+        {
+            path: '/login',
+            component: Login,
+        },
+
+        {
+            path: '/reg',
+            component: Reg,
+        },
+
     ]
 })
 
-export default router
+export default router;
+console.log('router=', router);

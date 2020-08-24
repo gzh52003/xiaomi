@@ -1,5 +1,5 @@
 <template>
-  <div>Order</div>
+  <div>分类删除</div>
 </template>
 <script>
 export default {};

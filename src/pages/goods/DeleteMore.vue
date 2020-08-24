@@ -1,5 +1,5 @@
 <template>
-  <div>Order</div>
+  <div>批量删除商品</div>
 </template>
 <script>
 export default {};
