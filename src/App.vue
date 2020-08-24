@@ -20,22 +20,22 @@
           @select="changeMenu"
           active-text-color="#ffd04b"
           router
-          unique-opened="true"
         >
+          <!-- unique-opened="true" -->
           <!-- router 使用 vue-router 的模式，启用该模式会在激活导航时以 index 作为 path 进行路由跳转 -->
           <template v-for="item in menu">
             <el-menu-item :index="item.path" :key="item.text" v-if="!item.submenu">
               <i :class="item.icon"></i>
               <span slot="title">{{item.text}}</span>
             </el-menu-item>
-            <el-submenu :index="item.path" :key="item.text" v-else>
-              <template slot="title">
+            <el-submenu :index="item.path" :key="item.path" v-else>
+              <template v-slot:title>
                 <i :class="item.icon"></i>
                 <span>{{item.text}}</span>
               </template>
 
               <el-menu-item
-                :index="item.path+sub.path"
+                :index="item.path+'/'+sub.path"
                 :key="sub.text"
                 v-for="sub in item.submenu"
               >{{sub.text}}</el-menu-item>
@@ -44,6 +44,7 @@
         </el-menu>
       </el-aside>
       <el-main>
+        <!-- {{activeIndex}} -->
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -161,10 +162,11 @@ export default {
     };
   },
   methods: {
-    changeMenu(path) {
+    changeMenu(path, c, d) {
       //进入页面时，高亮的菜单
       // console.log(this.activeIndex);
       this.activeIndex = path;
+      console.log(c, d);
     },
     // 用 el-menu 绑定  @select:"goto" 事件，传的第一个参数为 index ，index 放的是 path，
     // this.$router.push(path); 跳转到这个 path 的路由
