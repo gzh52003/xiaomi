@@ -13,8 +13,64 @@
         </el-col>
         <el-col :span="12" style="text-align:right">
           <div class="grid-content bg-purple-light">
-            <el-button type="primary" plain>登录</el-button>
-            <el-button type="primary" plain>注册</el-button>
+            <!-- <el-button type="primary" plain>登录</el-button>
+            <el-button type="primary" plain>注册</el-button>-->
+            <!-- 下拉菜单 -->
+            <el-dropdown @command="handleCommand">
+              <span class="el-dropdown-link">
+                <span style="color:#fc0;font-size:15px;margin-right:8px">HI!{{userinf.username}}</span>
+                个人中心
+                <i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item command="edit">修改密码</el-dropdown-item>
+                <el-dropdown-item command="logout">退出</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+
+            <!-- 对话框：修改密码 -->
+            <el-dialog title="修改密码" :visible.sync="dialogFormVisible" width="450px">
+              <el-form
+                :rules="rules"
+                :model="ruleForm"
+                label-position="right"
+                label-width="80px"
+                class="demo-ruleForm"
+                ref="ruleForm"
+              >
+                <el-form-item label="旧密码" prop="oldpsw">
+                  <el-input
+                    v-model="ruleForm.oldpsw"
+                    autocomplete="off"
+                    placeholder="请输入你的旧密码"
+                    style="width:300px"
+                    type="password"
+                  ></el-input>
+                </el-form-item>
+                <el-form-item label="新密码" prop="newpsw">
+                  <el-input
+                    v-model="ruleForm.newpsw"
+                    autocomplete="off"
+                    style="width:300px"
+                    placeholder="请输入你要设置的新密码"
+                    type="password"
+                  ></el-input>
+                </el-form-item>
+                <el-form-item label="确认密码" prop="checkpsw">
+                  <el-input
+                    v-model="ruleForm.checkpsw"
+                    autocomplete="off"
+                    style="width:300px"
+                    placeholder="请再次输入你要设置的新密码"
+                    type="password"
+                  ></el-input>
+                </el-form-item>
+              </el-form>
+              <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="editpsw">确 定</el-button>
+              </div>
+            </el-dialog>
           </div>
         </el-col>
       </el-row>
@@ -31,6 +87,7 @@
           @select="active"
           :default-openeds="openMenu"
           router
+          :unique-opened="true"
         >
           <template v-for="item in menu">
             <!-- 因为for和if不能同时存在一个标签内，使用template标签放置v-for循环 -->
@@ -83,17 +140,100 @@
 
 
 <script>
+import { logOut, getUser } from "@/utils/auth"; //引入cookie的方法
 export default {
   name: "App",
   data() {
+    //功能：验证旧密码是否正确
+    var validatePsw = async (A, value, callback) => {
+      const { data } = await this.$request.get(`user/checkpsw`, {
+        params: {
+          username: this.userinf.username,
+          password: value,
+        },
+      });
+
+      if (data.code == 1) {
+        //登陆成功:旧密码是正确的
+        callback();
+        this.$message({
+          message: "登陆成功:旧密码正确",
+          type: "success",
+        });
+      } else {
+        //登陆失败：旧密码不对
+        callback(new Error("您的旧密码错误"));
+        this.$message({
+          message: "登陆失败：旧密码不对",
+          type: "error",
+        });
+      }
+    };
+    //功能：验证新密码
+    var validatePass = (ruleForm, value, callback) => {
+      if (value === "") {
+        callback(new Error("请输入密码"));
+        this.$message({
+          message: "请输入密码",
+          type: "error",
+        });
+      } else {
+        if (this.ruleForm.checkpsw !== "") {
+          this.$refs.ruleForm.validateField("checkpsw");
+        }
+        callback();
+      }
+    };
+    //功能：验证确认密码
+    var validatePass2 = (ruleForm, value, callback) => {
+      if (value === "") {
+        callback(new Error("请再次输入密码"));
+      } else if (value !== this.ruleForm.newpsw) {
+        callback(new Error("两次输入密码不一致!"));
+      } else {
+        callback();
+      }
+    };
+
     return {
+      dialogFormVisible: false, //对话框的显示状态：false：不显示
+      value: new Date(),
+      ruleForm: {
+        oldpsw: "", //旧密码
+        newpsw: "", //新密码
+        checkpsw: "", //确认密码
+      },
+      userinf: {},
+      rules: {
+        //正则
+        oldpsw: [
+          { required: true, message: "旧密码不能为空", trigger: "blur" }, //用户名不能为空
+          { validator: validatePsw, trigger: "blur" }, //验证用户名是否存在
+          //   { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" }
+        ],
+        newpsw: [
+          // { required: true, message: "新密码不能为空", trigger: "blur" },
+          // {
+          //   min: 3,
+          //   max: 15,
+          //   message: "长度在 3 到 15 个字符",
+          //   trigger: "blur"
+          // }
+          { validator: validatePass, trigger: "blur" },
+        ],
+        checkpsw: [
+          // { required: true, message: "确认密码不能为空", trigger: "blur" },
+          { validator: validatePass2, trigger: "blur" },
+        ],
+      },
+
       activeIndex: "/home",
       //默认首页为home
       openMenu: [],
       menu: [
         {
           text: "首页",
-          path: "/home",
+          path: "/homecontent",
           icon: "el-icon-s-home",
         },
         {
@@ -198,9 +338,72 @@ export default {
       ],
     };
   },
+  //进入页面就获取用户信息
+  created() {
+    let userinf = getUser("xiaomi-user"); //字符串 {username:xxx,uid:xxx}
+    console.log(userinf);
+    if (userinf) {
+      this.userinf = JSON.parse(userinf);
+    }
+  },
   methods: {
     active(path) {
       this.activeIndex = path;
+    },
+    //功能：下拉菜单的触发
+    handleCommand(command) {
+      // console.log(command);
+      if (command == "edit") {
+        //修改密码
+        this.dialogFormVisible = true;
+      } else if (command == "logout") {
+        //退出
+        // console.log("退出了");
+        logOut(); //删除本地cookie的数据
+        this.$message({
+          message: "退出成功",
+          type: "success",
+          duration: 2000,
+        });
+
+        //跳转到登陆页
+        this.$router.push("/login");
+      }
+    },
+
+    //功能：点击确定按钮，确定修改密码
+    editpsw() {
+      this.$refs.ruleForm.validate(async (res) => {
+        if (res) {
+          //表单正则校验通过：发送ajax进行密码的修改
+          //获取：uid、username、新密码，传给接口
+          const { data } = await this.$request.put(`user/changepsw?`, {
+            username: this.userinf.username,
+            password: this.ruleForm.checkpsw,
+          });
+          console.log(data);
+          if (data.code == 1) {
+            //修改成功
+            this.dialogFormVisible = false;
+            this.$message({
+              message: "修改成功",
+              type: "success",
+            });
+            //跳到登陆页
+            this.$router.push("/login");
+            //清除本地存储的用户信息
+            logOut();
+          } else {
+            //修改失败
+            this.$message({
+              message: "修改失败",
+              type: "error",
+            });
+          }
+        } else {
+          return;
+        }
+      });
     },
   },
   components: {},
@@ -243,5 +446,17 @@ body {
     color: inherit !important;
     // inherit 继承父级颜色
   }
+}
+
+.el-dropdown-link {
+  cursor: pointer;
+  color: #fff;
+}
+.el-icon-arrow-down {
+  font-size: 12px;
+}
+.el-dropdown {
+  float: right;
+  padding-right: 20px;
 }
 </style>

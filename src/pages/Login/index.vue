@@ -11,18 +11,18 @@
         class="demo-ruleForm"
       >
         <el-form-item label="用户名" prop="name">
-          <el-input v-model="ruleForm.name"></el-input>
+          <el-input v-model="ruleForm.name" id="username"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input v-model="ruleForm.password"></el-input>
+          <el-input v-model="ruleForm.password" id="password" type="password"></el-input>
         </el-form-item>
         <el-form-item prop="keep">
           <!-- `checked` 为 true 或 false -->
-          <el-checkbox v-model="ruleForm.checked">保留7天免登陆</el-checkbox>
+          <el-checkbox v-model="ruleForm.checked" id="mdl" @click.native="keep($event)">保留7天免登陆</el-checkbox>
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')" style="float:right">登录</el-button>
+          <el-button type="primary" @click="loginGo" style="float:right" id="btnLogin">登录</el-button>
           <el-button @click="gotoReg" style="float:right;margin-right:5px">注册</el-button>
         </el-form-item>
       </el-form>
@@ -30,6 +30,8 @@
   </div>
 </template>
 <script>
+import { setToken, setUser } from "../../utils/auth"; //引入cookies设置的相关方法
+
 export default {
   data() {
     return {
@@ -60,24 +62,118 @@ export default {
         }
       });
     },
-    gotoReg() {},
+    gotoReg() {
+      this.$router.push("/reg");
+    },
+    async loginGo() {
+      const { data } = await this.$request.get(
+        `http://localhost:2003/api/login?username=${this.ruleForm.name}&password=${this.ruleForm.password}&mdl=${this.ruleForm.checked}`
+      );
+
+      console.log(data);
+      if (data.code === 0) {
+        this.$message({
+          message: "账号和密码错误",
+          type: "error",
+        });
+      } else {
+        // 登录成功
+        this.$message({
+          message: " 登录成功",
+          type: "success",
+        });
+        localStorage.setItem("currentUser", JSON.stringify(data.data));
+        this.$router.push("/");
+      }
+
+      let userinf = {
+        username: this.ruleForm.name,
+        uid: data.data._id,
+      };
+      console.log(userinf);
+      if (this.ruleForm.checked) {
+        //需要保持7天
+        setToken(data.data.authorization, 7);
+        setUser(JSON.stringify(userinf), 7);
+      } else {
+        //存成会话级别:关掉浏览器就删除
+        setToken(data.data.authorization);
+        setUser(JSON.stringify(userinf));
+      }
+    },
+
+    //功能：解决复选框的坑
+    keep(ev) {
+      if (ev.target.tagName == "INPUT") return;
+      console.log(123);
+      if (!this.ruleForm.checked) {
+        this.$message({
+          message: "请不要在公共场合使用该功能",
+          type: "error",
+        });
+      }
+    },
   },
 
   watch: {
-    ruleForm: {
-      deep: true,
-      handler: function (val) {
-        //保留7天免登陆的提示框
-        if (val.checked) {
-          this.$message({
-            message: "请不要在公共电脑使用该功能",
-            type: "warning",
-          });
-        }
-      },
-    },
+    // ruleForm: {
+    //   deep: true,
+    //   handler: function (val) {
+    //     //保留7天免登陆的提示框
+    //     if (val.checked) {
+    //       this.$message({
+    //         message: "请不要在公共电脑使用该功能",
+    //         type: "warning",
+    //       });
+    //     }
+    //   },
+    // },
+  },
+
+  created() {
+    // console.log(this.$route);
+    if (this.$route.query) {
+      this.ruleForm.name = this.$route.query.name;
+    }
   },
 };
+
+// (async () => {
+// 判断用户是否已经登录
+// const authorization = localStorage.getItem("authorization");
+// if (authorization) {
+//   this.$router.push("/");
+// }
+// // 获取图形验证码
+// async function getVcode(){
+//     const result = await fetch(`http://localhost:2003/api/vcode?`).then(res => res.json());
+//     if (result.code === 1) {
+//         svgVcode.innerHTML = result.data;
+//     }
+// }
+// getVcode();
+// 点击刷新验证码
+// svgVcode.onclick = getVcode;
+//   btnLogin.onclick = async () => {
+//     const _username = username.value;
+//     const _password = password.value;
+//     // const _vcode = vcode.value;
+//     const _mdl = mdl.checked;
+//     const result = await fetch(
+//       `http://localhost:8080/api/login?username=${_username}&password=${_password}&mdl=${_mdl}`
+//     ).then((res) => res.json());
+//     if (result.code === 0) {
+//       this.$message({
+//         message: "账号和密码错误",
+//         type: "error",
+//       });
+//     } else {
+//       // 登录成功
+//       localStorage.setItem("currentUser", JSON.stringify(result.data));
+//       this.$router.push("/");
+//     }
+//   };
+// })();
 </script>
 
 <style lang="scss" scoped>

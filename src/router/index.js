@@ -34,6 +34,7 @@ import OrderList from '../pages/order/List.vue'
 import OrderDelete from '../pages/order/Delete.vue'
 
 import Home from '../pages/Home.vue'
+import HomeContent from '../pages/Homecontent.vue'
 // import Order from '../pages/Order.vue'
 // import Goods from '../pages/Goods.vue'
 import Reg from '../pages/reg/index.vue'
@@ -54,6 +55,14 @@ const router = new VueRouter({
             path: '/home',
             component: Home,
             children: [{
+                    path: '/',
+                    redirect: 'homecontent'
+                },
+                {
+                    path: '/homecontent',
+                    component: HomeContent,
+                },
+                {
                     path: '/user',
                     component: User,
                     children: [
