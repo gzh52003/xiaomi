@@ -80,7 +80,6 @@
         <el-menu
           style="height:100%"
           :default-active="activeIndex"
-          unique-opened="true"
           mode="vertical"
           background-color="#545c64"
           text-color="#fff"

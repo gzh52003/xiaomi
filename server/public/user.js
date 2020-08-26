@@ -191,7 +191,7 @@ router.put("/edit/:_id", async (req, res) => {
     }
 })
 
-// 编辑用户信息
+// 编辑密码信息
 router.put("/changepsw", async (req, res) => {
     // const {
     //     _id,
