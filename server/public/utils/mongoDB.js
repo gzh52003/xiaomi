@@ -109,10 +109,11 @@ async function find(colName, query = {}, options = {}) {
     if (options.skip) {
         result = result.skip(options.skip - 0)
     }
-    // limit 限制数量
+    // limit 限制数量 
     if (options.limit) {
         result = result.limit(options.limit - 0);
     }
+    console.log(options.skip,options.limit);
 
     // 排序
     // console.log('sort', options.sort);

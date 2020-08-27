@@ -326,11 +326,11 @@ export default {
               path: "/list",
             },
             {
-              text: "添加订单",
+              text: "订单处理",
               path: "/add",
             },
             {
-              text: "删除订单",
+              text: "退款操作",
               path: "/delete",
             },
           ],
