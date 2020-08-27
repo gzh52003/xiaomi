@@ -24,7 +24,7 @@
         <el-menu
           style="height:100%"
           :default-active="activeIndex"
-          unique-opened="true"
+          :nique-opened="true"
           mode="vertical"
           background-color="#545c64"
           text-color="#fff"
@@ -187,11 +187,11 @@ export default {
               path: "/list",
             },
             {
-              text: "添加订单",
+              text: "订单处理",
               path: "/add",
             },
             {
-              text: "删除订单",
+              text: "退款操作",
               path: "/delete",
             },
           ],

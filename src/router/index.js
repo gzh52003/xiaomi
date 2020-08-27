@@ -18,7 +18,6 @@ import GoodsList from '../pages/goods/List.vue'
 import GoodsDelete from '../pages/goods/Delete.vue'
 import GoodsDeleteMore from '../pages/goods/DeleteMore.vue'
 import GoodsSearch from '../pages/goods/Search.vue'
-import GoodsEdit from '../pages/goods/Edit.vue'
 
 //商品管理下的分类管理
 import Classification from '../pages/goods/classification/Default.vue'
@@ -32,6 +31,8 @@ import Order from '../pages/order/Default.vue'
 import OrderAdd from '../pages/order/Add.vue'
 import OrderList from '../pages/order/List.vue'
 import OrderDelete from '../pages/order/Delete.vue'
+import OrderEdit from '../pages/order/Edit.vue'
+
 
 import Home from '../pages/Home.vue'
 // import Order from '../pages/Order.vue'
@@ -104,6 +105,9 @@ const router = new VueRouter({
                         {
                             path: 'delete',
                             component: OrderDelete
+                        },{
+                            path: 'Edit',
+                            component: OrderEdit
                         },
                     ]
                 },
@@ -133,10 +137,6 @@ const router = new VueRouter({
                         {
                             path: 'search',
                             component: GoodsSearch
-                        },
-                        {
-                            path: 'edit',
-                            component: GoodsEdit
                         },
                         {
                             path: 'classification',
