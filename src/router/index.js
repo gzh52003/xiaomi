@@ -1,73 +1,192 @@
-import Vue from "vue"
+import Vue from 'vue';
 
-// 引入路由 vue-router
+//1.引入Vue-Router
 import VueRouter from 'vue-router'
 
+//用户管理
+import User from '../pages/user/Default.vue'
+import UserList from '../pages/user/List.vue'
+import UserAdd from '../pages/user/Add.vue'
+import UserEdit from '../pages/user/Edit.vue'
+import UserDelete from '../pages/user/delete.vue'
+import UserPower from '../pages/user/power.vue'
 
-// 调用Vue.use手动安装，之后才能在实例中通过this.$route访问
+//商品管理
+import Goods from '../pages/goods/Default.vue'
+import GoodsAdd from '../pages/goods/Add.vue'
+import GoodsList from '../pages/goods/List.vue'
+import GoodsDelete from '../pages/goods/Delete.vue'
+import GoodsDeleteMore from '../pages/goods/DeleteMore.vue'
+import GoodsSearch from '../pages/goods/Search.vue'
+import GoodsEdit from '../pages/goods/Edit.vue'
+
+//商品管理下的分类管理
+import Classification from '../pages/goods/classification/Default.vue'
+import ClassificationAdd from '../pages/goods/classification/Add.vue'
+import ClassificationList from '../pages/goods/classification/List.vue'
+import ClassificationDelete from '../pages/goods/classification/Delete.vue'
+import ClassificationEdit from '../pages/goods/classification/Edit.vue'
+
+//订单管理
+import Order from '../pages/order/Default.vue'
+import OrderAdd from '../pages/order/Add.vue'
+import OrderList from '../pages/order/List.vue'
+import OrderDelete from '../pages/order/Delete.vue'
+
+import Home from '../pages/Home.vue'
+// import Order from '../pages/Order.vue'
+// import Goods from '../pages/Goods.vue'
+import Reg from '../pages/reg/index.vue'
+import Login from '../pages/Login/index.vue'
+import NotFound from '../pages/NotFound.vue'
+
+//2.使用vue-router
 Vue.use(VueRouter);
 
-// 实例化并配置参数    
-// Router初始化报错，Cannot read property '$createElement' of undefined 
-// 是因为components：Home 不用加s
-
+//3.实例化router并配置参数
 const router = new VueRouter({
-    routes : [
-        {
+    // mode:'history',//一般上线后改为history路由（需要额外配置服务器）
+    routes: [{
             path: '/', // /->/home
-            // 严格匹配
-            redirect: '/home'
+            component: Home
         },
         {
             path: '/home',
-            component:()=>import("../components/Home.vue")
-        },
-        {
-            path: '/user',
-            component: ()=>import("../components/user/Default.vue"),
-            // 二级导航
-            children: [
-                // 进入用户管理页面直接跳到用户列表
+            component: Home,
+            children: [{
+                    path: '/user',
+                    component: User,
+                    children: [
+                        //进入用户管理页面直接跳到用户列表
+                        {
+                            path: '',
+                            redirect: 'list'
+                        }, {
+                            path: 'add',
+                            component: UserAdd
+                        }, {
+                            name: 'list',
+                            path: 'list',
+                            component: UserList
+                        }, {
+                            name: 'userEdit',
+                            //可以通过name来跳转页面
+                            path: 'edit/:id',
+                            //通过：id来传参
+                            component: UserEdit
+                            //用户编辑
+                        }, {
+                            // name: 'userDelete',
+                            path: 'delete',
+                            component: UserDelete
+                        }, {
+                            path: 'power',
+                            component: UserPower
+                        }
+                    ]
+                },
                 {
-                    path: '',
-                    redirect: 'list'
-                }, {
-                    path: 'add',
-                    component: ()=>import("../components/user/Add.vue")
-                }, {
-                    path: 'list',
-                    component: ()=>import("../components/user/List.vue")
-                }]
-        },
-        {
-            path: '/order',
-            component:()=>import("../components/Order.vue")
-        },
-        {
-            path: '/goods',
-            component:()=>import("../components/Goods.vue")
+                    path: '/order',
+                    component: Order,
+                    children: [
+                        //进入订单管理页面直接跳到订单列表
+                        {
+                            path: '/',
+                            redirect: 'list'
+                        }, {
+                            path: 'add',
+                            component: OrderAdd
+                        },
+                        {
+                            path: 'list',
+                            component: OrderList
+                        },
+                        {
+                            path: 'delete',
+                            component: OrderDelete
+                        },
+                    ]
+                },
+                {
+                    path: '/goods',
+                    component: Goods,
+                    children: [{
+                            path: '/',
+                            redirect: 'list'
+                        },
+                        {
+                            path: 'list',
+                            component: GoodsList
+                        },
+                        {
+                            path: 'add',
+                            component: GoodsAdd
+                        },
+                        {
+                            path: 'delete',
+                            component: GoodsDelete
+                        },
+                        {
+                            path: 'deletemore',
+                            component: GoodsDeleteMore
+                        },
+                        {
+                            path: 'search',
+                            component: GoodsSearch
+                        },
+                        {
+                            path: 'edit',
+                            component: GoodsEdit
+                        },
+                        {
+                            path: 'classification',
+                            component: Classification,
+                            children: [{
+                                    path: 'add',
+                                    component: ClassificationAdd
+                                },
+                                {
+                                    path: 'list',
+                                    component: ClassificationList
+                                },
+                                {
+                                    path: 'delete',
+                                    component: ClassificationDelete
+                                },
+                                {
+                                    path: 'edit',
+                                    component: ClassificationEdit
+                                }
+                            ]
+                        },
+                    ]
+                },
+
+                {
+                    path: '/404',
+                    component: NotFound,
+                },
+
+                //404页面效果
+                {
+                    path: '*',
+                    redirect: '/404'
+                    //除了有设置的路径之外所有路径都自动跳转到404
+                }
+            ],
         },
         {
             path: '/login',
-            component:()=>import("../components/Login.vue")
-        },
-        {
-            path: '/reg',
-            component:()=>import("../components/Reg.vue")
-        },
-        {
-            path: '/404',
-            component:()=>import("../components/NotFound.vue")
+            component: Login,
         },
 
-        // 404页面效果
         {
-            path: '*',
-            redirect: '/404'
-        }
+            path: '/reg',
+            component: Reg,
+        },
+
     ]
 })
 
 export default router;
-
 console.log('router=', router);
