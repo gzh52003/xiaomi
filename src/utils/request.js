@@ -3,7 +3,8 @@ import axios from 'axios';
 
 //创建一个新的axios
 const request = axios.create({
-    baseURL: 'http://localhost:2003/api'
+    baseURL: 'http://localhost:2003/api',
+
 });
 
 
