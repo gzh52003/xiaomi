@@ -74,7 +74,7 @@ const router = new VueRouter({
                             path: 'add',
                             component: UserAdd
                         }, {
-                            name: 'list',
+                            name: 'userList',
                             path: 'list',
                             component: UserList
                         }, {
@@ -198,4 +198,3 @@ const router = new VueRouter({
 })
 
 export default router;
-console.log('router=', router);
