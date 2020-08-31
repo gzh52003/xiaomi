@@ -30,21 +30,25 @@ const uploadMiddleware = multer({
     storage
 });
 
-router.post('/avatar', uploadMiddleware.single('haoge'), async (req, res) => {
+router.put('/avatar/:_id', uploadMiddleware.single('haoge'), async (req, res) => {
     // 中间件会把图片信息格式化到req.file,req.files
     // console.log('file=', req.file, req.body);
-    // const {
-    //     _id
-    // } = req.body;
-
+    const {
+        _id
+    } = req.params
+    console.log(_id)
     // 更新用户信息
 
     const avatarUrl = '/uploads/' + req.file.filename
     try {
         const {
             data
-        } = await mongo.insert('img', {
-            avatarUrl
+        } = await mongo.update('userList', {
+            _id
+        }, {
+            $set: {
+                imgUrl: avatarUrl
+            }
         })
         res.send(sendDate({
             code: 1,

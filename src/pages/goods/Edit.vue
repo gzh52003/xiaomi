@@ -1,6 +1,101 @@
 <template>
-  <div>商品编辑</div>
+  <div>
+    <p>编辑商品</p>
+    <el-row>
+      <el-col :span="16">
+        <el-form
+          status-icon
+          label-width="100px"
+          class="demo-ruleForm"
+          style="width: 90%; margin:0 auto"
+        >
+          <!-- :model="ruleForm"
+      :rules="rules"
+          ref="ruleForm"-->
+          <el-form-item label="商品名称" prop="product_name">
+            <el-input type="text" v-model="data.product_name" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="产品简介" prop="role">
+            <el-input v-model.number="data.product_brief"></el-input>
+          </el-form-item>
+          <el-form-item label="原价" prop="product_org_price">
+            <el-input v-model.number="data.product_org_price"></el-input>
+          </el-form-item>
+          <el-form-item label="现价" prop="product_price">
+            <el-input v-model.number="data.product_price"></el-input>
+          </el-form-item>
+
+          <el-form-item>
+            <el-button type="primary" @click="submit">提交</el-button>
+            <el-button>重置</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+      <!-- <el-col :span="8">
+        <div class="demo-image__preview" style=" display:block;">
+          <el-image style="width: 100px; height: 100px" :src="url"></el-image>
+        </div>
+        <el-form status-icon width="100px" style="width:100px; display:block;">
+          <input type="file" @change="imgurlChange" ref="imgUpload" />
+        </el-form>
+      </el-col>-->
+    </el-row>
+  </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      data: {},
+    };
+  },
+  async beforeCreate() {
+    // 对 得到的数据库进行 字段 筛选，不返回密码
+    const _id = this.$route.params.id;
+    const {
+      data: { data },
+    } = await this.$request.get("/goods", { params: { _id } });
+    this.data = data[0];
+  },
+  methods: {
+    // async imgurlChange() {
+    //   // console.log(this.imgurl);
+    //   const _id = this.$route.params.id;
+    //   console.log(this.$refs.imgUpload.files[0]);
+    //   const params = new FormData();
+    //   params.append("haoge", this.$refs.imgUpload.files[0]);
+    //   const { data } = await this.$request.put("upload/avatar/" + _id, params, {
+    //     contentType: false, // 不需要自定义content-type
+    //     // headers:{
+    //     //     'Content-Type':'multipart/form-data'
+    //     // }
+    //   });
+    //   // console.log(data);
+    //   this.url = "http://localhost:2003/" + data.data; // 访问 服务器的图片地址
+    // },
+    async submit() {
+      const {
+        _id,
+        product_name,
+        product_brief,
+        product_price,
+        product_org_price,
+      } = this.data;
+      const { data } = await this.$request.put("/goods/" + _id, {
+        product_name,
+        product_brief,
+        product_price,
+        product_org_price,
+      });
+      console.log(data);
+      if (data.code === 1) {
+        this.$message({
+          type: "success",
+          message: "修改成功!",
+        });
+        this.$router.push({ name: "goodList" });
+      }
+    },
+  },
+};
 </script>

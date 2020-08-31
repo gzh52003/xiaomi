@@ -115,6 +115,7 @@ const router = new VueRouter({
                             redirect: 'list'
                         },
                         {
+                            name: 'goodList',
                             path: 'list',
                             component: GoodsList
                         },
@@ -135,7 +136,9 @@ const router = new VueRouter({
                             component: GoodsSearch
                         },
                         {
-                            path: 'edit',
+
+                            name: 'editGoods',
+                            path: 'edit/:id',
                             component: GoodsEdit
                         },
                         {

@@ -3,6 +3,7 @@ const router = express.Router()
 
 const userRouter = require("./user")
 const uploadRouter = require("./upload")
+const goodsRouter = require("./goods")
 
 const cors = require("./cors")
 
@@ -13,6 +14,7 @@ router.use(express.urlencoded({
 }), express.json())
 
 router.use("/user", userRouter)
+router.use("/goods", goodsRouter)
 
 router.use("/upload", uploadRouter)
 

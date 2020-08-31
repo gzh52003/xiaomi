@@ -44,9 +44,7 @@ export default {
   data() {
     return {
       data: {},
-      imgurl: "",
-      url:
-        "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
+      url: "",
     };
   },
   async beforeCreate() {
@@ -56,21 +54,25 @@ export default {
       data: { data },
     } = await this.$request.get("/user", { params: { _id } });
     this.data = data[0];
+    this.url = "http://localhost:2003/" + this.data.imgUrl;
+    // 图片地址拼接，访问服务器的地址
+    console.log(data);
   },
   methods: {
     async imgurlChange() {
       // console.log(this.imgurl);
+      const _id = this.$route.params.id;
       console.log(this.$refs.imgUpload.files[0]);
       const params = new FormData();
       params.append("haoge", this.$refs.imgUpload.files[0]);
-      const { data } = await this.$request.post("upload/avatar", params, {
-        contentType: false, // 告诉fetch，不需要自定义content-type
+      const { data } = await this.$request.put("upload/avatar/" + _id, params, {
+        contentType: false, // 不需要自定义content-type
         // headers:{
         //     'Content-Type':'multipart/form-data'
         // }
       });
       // console.log(data);
-      this.url = data;
+      this.url = "http://localhost:2003/" + data.data; // 访问 服务器的图片地址
     },
     async submit() {
       const { _id, username, role, gender } = this.data;

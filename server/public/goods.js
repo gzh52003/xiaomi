@@ -10,24 +10,20 @@ const {
     update
 } = require("./utils/mongoDB")
 
-// 获取用户列表
+// 获取商品列表
 router.get('/', async (req, res) => {
     const {
         page,
         size,
-        _id,
+        _id
     } = req.query
 
     if (_id) {
-        // 查询该ID 的用户
+        // 查询该ID 的列表
         try {
-            const data = await mongo.find('userList', {
+            const data = await mongo.find('goods', {
                 _id
-            }, {
-                field: {
-                    password: false // 不返回 password 字段数据
-                }
-            })
+            }, {})
 
             res.send(sendDate({
                 data
@@ -41,13 +37,10 @@ router.get('/', async (req, res) => {
         // 否则返回用户列表，并返回 数据的总数 
         // 得到的数据格式为 data={total:4,data:[]}
         try {
-            const data = await mongo.find('userList', {}, {
+            const data = await mongo.find('goods', {}, {
                 skip: (page - 1) * size,
                 limit: size,
                 total: 1,
-                field: {
-                    password: false // 不返回 password 字段数据
-                }
             })
             res.send(sendDate({
                 data
@@ -59,35 +52,8 @@ router.get('/', async (req, res) => {
         }
     }
 })
-// 查找用户是否存在
-router.get('/checkname', async (req, res) => {
-    const {
-        username
-    } = req.query
 
-    // console.log(username)
-    try {
-        const data = await mongo.find('userList', {
-            username
-        }, {})
-
-        // 长度为零时，说明用户名不存在，返回成功 code =1
-        if (data.length == 0) {
-            res.send(sendDate({}))
-        } else {
-            res.send(sendDate({
-                code: 0
-            }))
-        }
-    } catch (err) {
-        res.send(sendDate({
-            code: 0
-        }))
-    }
-
-})
-
-// 删除用户
+// 删除商品
 router.delete("/:_id", async (req, res) => {
     const {
         _id
@@ -95,7 +61,7 @@ router.delete("/:_id", async (req, res) => {
     // console.log(id)
     // console.log(_id)
     try {
-        const result = await mongo.remove('userList', {
+        const result = await mongo.remove('goods', {
             _id
         })
         // console.log(result)
@@ -112,19 +78,18 @@ router.delete("/:_id", async (req, res) => {
 // 添加用户
 router.post('/', async (req, res) => {
     const {
-        username = "",
-            password = "",
-            role = "",
-            gender = "",
-            imgUrl = "uploads/haoge-1598500381948.jpg" //默认头像地址
+        product_name,
+        product_brief,
+        product_price,
+        product_org_price,
     } = req.body
+
     try {
-        const result = await mongo.insert('userList', {
-            username,
-            password,
-            role,
-            gender,
-            imgUrl,
+        const result = await mongo.insert('goods', {
+            product_name,
+            product_brief,
+            product_price,
+            product_org_price,
         })
         res.send(sendDate({}))
     } catch (err) {
@@ -139,20 +104,24 @@ router.put("/:_id", async (req, res) => {
         _id,
     } = req.params
     // console.log(_id)
-    // 编辑用户信息，某条不做编辑时，输入框也是存在数据的，不会出现为空的问题？password在些不做更改
+    // 编辑商品信息，某条不做编辑时，输入框也是存在数据的，不会出现为空的问题？password在些不做更改
     const {
-        username,
-        role,
-        gender
+        product_name,
+        product_brief,
+        product_price,
+        product_org_price,
     } = req.body
+
     // console.log(username, gender, role)
     const newdata = {
-        username,
-        role,
-        gender
+        product_name,
+        product_brief,
+        product_price,
+        product_org_price,
     }
+    console.log(newdata)
     try {
-        const result = await update('userList', {
+        const result = await update('goods', {
             _id
         }, {
             $set: newdata

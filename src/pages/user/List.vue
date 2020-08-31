@@ -13,13 +13,13 @@
         <el-table-column label="用户名">
           <template slot-scope="scope">{{ scope.row.username }}</template>
         </el-table-column>
-        <el-table-column prop="name" label="性别">
+        <el-table-column prop="gender" label="性别">
           <template slot-scope="scope">{{ scope.row.gender }}</template>
         </el-table-column>
-        <el-table-column prop="address" label="权限" show-overflow-tooltip>
+        <el-table-column prop="role" label="权限" show-overflow-tooltip>
           <template slot-scope="scope">{{ scope.row.role}}</template>
         </el-table-column>
-        <el-table-column>
+        <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button
               size="small"
@@ -43,7 +43,8 @@
       background
       layout="prev, pager, next"
       style="text-align:center;margin-top:50px"
-      :total="50"
+      :total="total"
+      :page-size="8"
       :current-page="page"
       @current-change="pageChange"
     ></el-pagination>
@@ -57,11 +58,12 @@ export default {
   data() {
     return {
       userList: [],
+      total: 1,
       page: 1,
     };
   },
 
-  async created() {
+  async beforeCreate() {
     const {
       data: { data },
     } = await this.$request.get("/user", {
@@ -70,7 +72,8 @@ export default {
         size: 8,
       },
     });
-    this.userList = data;
+    this.userList = data.data;
+    this.total = data.total;
     // console.log(data);
   },
   methods: {
@@ -90,7 +93,7 @@ export default {
           size: 8,
         },
       });
-      this.userList = data;
+      this.userList = data.data;
     },
     async removeUser(id) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
