@@ -3,10 +3,10 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 
-const mongo = require("./utils/mongoDB")
-const {
-    sendDate
-} = require("./utils/sendDate")
+const mongo = require('../utils/mongo');
+const { formatData, md5 } = require('../utils/tools')
+
+
 // 配置上传参数
 let storage = multer.diskStorage({
     // destination: function (req, file, cb) {
@@ -25,40 +25,27 @@ let storage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now() + ext);
     }
 })
-// 设置中间件
-const uploadMiddleware = multer({
-    storage
-});
 
-router.post('/avatar', uploadMiddleware.single('haoge'), async (req, res) => {
+// 设置中间件
+const uploadMiddleware = multer({ storage });
+
+
+// post /api/upload/avatar
+router.post('/avatar', uploadMiddleware.single('avatar'), (req, res) => {
     // 中间件会把图片信息格式化到req.file,req.files
-    // console.log('file=', req.file, req.body);
-    // const {
-    //     _id
-    // } = req.body;
+    console.log('file=', req.file, req.body);
+    const { _id } = req.body;
 
     // 更新用户信息
-
     const avatarUrl = '/uploads/' + req.file.filename
-    try {
-        const {
-            data
-        } = await mongo.insert('img', {
-            avatarUrl
-        })
-        res.send(sendDate({
-            code: 1,
-            data: avatarUrl
-        }))
-    } catch (err) {
-        res.send(sendDate({
-            code: 0
-        }))
-    }
+    mongo.update('user', { _id }, { $set: { avatarUrl } })
 
+    res.send(formatData({ data: { _id, avatarUrl } }));
 })
 
+// 一次性最多传5张图片
+router.post('/goods', uploadMiddleware.array('goods', 5), (req, res) => {
 
-
+})
 
 module.exports = router;

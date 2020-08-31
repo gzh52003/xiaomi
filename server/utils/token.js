@@ -2,8 +2,11 @@ const jwt = require('jsonwebtoken');
 
 const privateKey = 'laoxie';
 
-function create(data={},expiresIn='2h'){
-    const token = jwt.sign({ ...data }, privateKey ,{
+function create(data = {}, expiresIn = '2h') {
+    console.log("expiresIn=", expiresIn)
+    const token = jwt.sign({
+        ...data
+    }, privateKey, {
         // token有效期
         expiresIn
     });
@@ -11,12 +14,12 @@ function create(data={},expiresIn='2h'){
     return token;
 }
 
-function verify(token){
-    let result ;
-    try{
+function verify(token) {
+    let result;
+    try {
         jwt.verify(token, privateKey);
         result = true;
-    }catch(err){
+    } catch (err) {
         result = false
     }
 

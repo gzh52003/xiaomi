@@ -12,14 +12,17 @@ router.get("/", async (req, res) => {
     let {
         username,
         password,
-        mdl
+        checked,
+        vcode
     } = req.query
     // console.log(username, password)
     //如果这个验证码不相等
-    // if(vcode!==req.session.vcode){
-    //     res.send(formatData({code:10}))
-    //     return
-    // }
+    if (vcode !== req.session.vcode) {
+        res.send(formatData({
+            code: 10
+        }))
+        return
+    }
     // const hash = crypto.createHash('md5');
     // hash.update(password + 'xiaomi'); //加盐，盐值
     // password = hash.digest('hex');
@@ -31,25 +34,32 @@ router.get("/", async (req, res) => {
     })
     // console.log("这是一个长度", result.length);
     if (result.length > 0) {
-        //    console.log(789);
-        let authorization
-        if (mdl === "true") {
+        // 用户名、密码、验证码都校验通过后，判断是否有免登陆选项
+        console.log('req.query=', req.query);
+        let authorization;
+        if (checked == 'true') {
+            // token的操作
+            // 1. 生成token
+            // const token = jwt.sign({ username }, 'laoxie' ,{
+            //     // token有效期
+            //     expiresIn: 20//1000 * 60 * 60 * 24 * 7
+            // });
+
             authorization = token.create({
                 username
-            }, "7d")
-            //取到里面的对象
-            result = result[0];
-            result.authorization = authorization
-            res.send(formatData({
-                data: result
-            }));
-            return;
+            }, 30)
+            console.log("token寿命=", authorization);
         } else {
             authorization = token.create({
                 username
             })
         }
-        res.send(formatData({}))
+        // console.log('token=', authorization);
+        result = result[0];
+        result.authorization = authorization
+        res.send(formatData({
+            data: result
+        }));
     } else {
         res.send(formatData({
             code: 0

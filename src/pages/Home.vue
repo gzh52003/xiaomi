@@ -1,8 +1,7 @@
-
 <template>
   <el-container style="height:100%">
     <el-header class="header">
-      <el-row>
+      <el-row style="margin:0;">
         <el-col :span="12" class="logo">
           <div class="grid-content bg-purple logo-img">
             <i>
@@ -18,7 +17,7 @@
             <!-- 下拉菜单 -->
             <el-dropdown @command="handleCommand">
               <span class="el-dropdown-link">
-                <span style="color:#fc0;font-size:15px;margin-right:8px">HI!{{userinf.username}}</span>
+                <span style="color:#fc0;font-size:15px;margin-right:8px">HI!{{currentUser.username}}</span>
                 个人中心
                 <i class="el-icon-arrow-down el-icon--right"></i>
               </span>
@@ -140,7 +139,7 @@
 
 
 <script>
-import { logOut, getUser } from "@/utils/auth"; //引入cookie的方法
+import { logOut } from "@/utils/auth"; //引入cookie的方法
 export default {
   name: "App",
   data() {
@@ -196,6 +195,7 @@ export default {
     };
 
     return {
+      currentUser: {},
       dialogFormVisible: false, //对话框的显示状态：false：不显示
       value: new Date(),
       ruleForm: {
@@ -340,13 +340,35 @@ export default {
   },
   //进入页面就获取用户信息
   created() {
-    let userinf = getUser("xiaomi-user"); //字符串 {username:xxx,uid:xxx}
-    console.log(userinf);
-    if (userinf) {
-      this.userinf = JSON.parse(userinf);
-    }
+    // let userinf = getUser("xiaomi-user"); //字符串 {username:xxx,uid:xxx}
+    // console.log(userinf);
+    // if (userinf) {
+    //   this.userinf = JSON.parse(userinf);
+    // }
+    this.getcurrentUser();
+  },
+  watch: {
+    $route(to, from) {
+      if (from.path === "/login") {
+        this.getcurrentUser();
+      }
+      if (to.path === "/login") {
+        logOut(); //删除本地cookie的数据
+        localStorage.removeItem("currentUser");
+        this.currentUser = {};
+      }
+    },
   },
   methods: {
+    getcurrentUser() {
+      let currentUser = localStorage.getItem("currentUser");
+
+      try {
+        this.currentUser = JSON.parse(currentUser);
+      } catch (err) {
+        this.currentUser = {};
+      }
+    },
     active(path) {
       this.activeIndex = path;
     },
@@ -360,6 +382,8 @@ export default {
         //退出
         // console.log("退出了");
         logOut(); //删除本地cookie的数据
+        localStorage.removeItem("currentUser");
+        this.currentUser = {};
         this.$message({
           message: "退出成功",
           type: "success",
@@ -393,6 +417,8 @@ export default {
             this.$router.push("/login");
             //清除本地存储的用户信息
             logOut();
+            localStorage.removeItem("currentUser");
+            this.currentUser = {};
           } else {
             //修改失败
             this.$message({

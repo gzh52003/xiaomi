@@ -10,12 +10,21 @@
         label-width="100px"
         class="demo-ruleForm"
       >
-        <el-form-item label="用户名" prop="name">
-          <el-input v-model="ruleForm.name" id="username"></el-input>
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="ruleForm.username" id="username"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input v-model="ruleForm.password" id="password" type="password"></el-input>
         </el-form-item>
+
+        <el-form-item label="验证码" prop="vcode">
+          <el-input v-model="ruleForm.vcode">
+            <template v-slot:append>
+              <div v-html="vcodeSvg" class="vcode" @click="getVcode"></div>
+            </template>
+          </el-input>
+        </el-form-item>
+
         <el-form-item prop="keep">
           <!-- `checked` 为 true 或 false -->
           <el-checkbox v-model="ruleForm.checked" id="mdl" @click.native="keep($event)">保留7天免登陆</el-checkbox>
@@ -35,18 +44,27 @@ import { setToken, setUser } from "../../utils/auth"; //引入cookies设置的�
 export default {
   data() {
     return {
+      vcodeSvg: "",
       ruleForm: {
-        name: "",
+        username: "",
         password: "",
+        vcode: "",
         checked: false,
       },
       rules: {
-        name: [
+        username: [
           { required: true, message: "用户名不能为空", trigger: "blur" },
           // { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" },
         ],
         password: [
           { required: true, message: "密码不能为空", trigger: "blur" },
+        ],
+        vcode: [
+          {
+            required: true,
+            message: "请填写验证码",
+            trigger: "blur",
+          },
         ],
       },
     };
@@ -66,14 +84,20 @@ export default {
       this.$router.push("/reg");
     },
     async loginGo() {
-      const { data } = await this.$request.get(
-        `http://localhost:2003/api/login?username=${this.ruleForm.name}&password=${this.ruleForm.password}&mdl=${this.ruleForm.checked}`
-      );
+      // const { data } = await this.$request.get(
+      //   `http://localhost:2003/api/login?username=${this.ruleForm.name}&password=${this.ruleForm.password}&mdl=${this.ruleForm.checked}&vcode=${this.ruleForm.vcode}`
+      // );
+      console.log({ ...this.ruleForm });
+      const { data } = await this.$request.get("/login", {
+        params: {
+          ...this.ruleForm,
+        },
+      });
 
-      console.log(data);
-      if (data.code === 0) {
+      console.log("data=", data);
+      if (data.code === 0 || data.code === 10) {
         this.$message({
-          message: "账号和密码错误",
+          message: "账号和密码，验证码错误",
           type: "error",
         });
       } else {
@@ -82,12 +106,19 @@ export default {
           message: " 登录成功",
           type: "success",
         });
+
         localStorage.setItem("currentUser", JSON.stringify(data.data));
+        // 把用户信息写入本地存储
+
         this.$router.push("/");
+
+        console.log("redirectTo=", redirectTo);
+        const { redirectTo = "/homecontent" } = this.$route.query;
+        this.$router.replace(redirectTo);
       }
 
       let userinf = {
-        username: this.ruleForm.name,
+        username: this.ruleForm.username,
         uid: data.data._id,
       };
       console.log(userinf);
@@ -113,6 +144,11 @@ export default {
         });
       }
     },
+
+    async getVcode() {
+      const { data } = await this.$request.get("/vcode");
+      this.vcodeSvg = data.data;
+    },
   },
 
   watch: {
@@ -135,6 +171,7 @@ export default {
     if (this.$route.query) {
       this.ruleForm.name = this.$route.query.name;
     }
+    this.getVcode();
   },
 };
 
@@ -176,7 +213,7 @@ export default {
 // })();
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 //scoped:这里面的样式只在本组件生效，局部作用域
 //lang设置用sass写样式
 
@@ -204,5 +241,22 @@ export default {
   padding-right: 60px;
   // 圆角
   border-radius: 20px;
+}
+
+.vcode {
+  display: block;
+  width: 38px;
+  height: 38px;
+  position: relative;
+  left: -20px;
+}
+
+.vcode svg {
+  display: block;
+  width: 80px;
+  // height: ;
+  position: absolute;
+  left: 0;
+  // top: -4px;
 }
 </style>

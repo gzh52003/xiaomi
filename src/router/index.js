@@ -42,6 +42,8 @@ import Reg from '../pages/reg/index.vue'
 import Login from '../pages/Login/index.vue'
 import NotFound from '../pages/NotFound.vue'
 
+import request from '../utils/request'
+
 //2.使用vue-router
 Vue.use(VueRouter);
 
@@ -55,6 +57,9 @@ const router = new VueRouter({
         {
             path: '/home',
             component: Home,
+            meta: {
+                requiresAuth: true
+            },
             children: [{
                     path: '/',
                     redirect: 'homecontent'
@@ -62,6 +67,9 @@ const router = new VueRouter({
                 {
                     path: '/homecontent',
                     component: HomeContent,
+                    meta: {
+                        requiresAuth: true
+                    },
                 },
                 {
                     path: '/user',
@@ -114,7 +122,7 @@ const router = new VueRouter({
                         {
                             path: 'delete',
                             component: OrderDelete
-                        },{
+                        }, {
                             path: 'Edit',
                             component: OrderEdit
                         },
@@ -123,6 +131,12 @@ const router = new VueRouter({
                 {
                     path: '/goods',
                     component: Goods,
+
+                    //路由独享的守卫
+                    // beforeEnter(to, from, next) {
+                    //     console.log("beforeEnter");
+                    // },
+
                     children: [{
                             path: '/',
                             redirect: 'list'
@@ -170,18 +184,6 @@ const router = new VueRouter({
                         },
                     ]
                 },
-
-                {
-                    path: '/404',
-                    component: NotFound,
-                },
-
-                //404页面效果
-                {
-                    path: '*',
-                    redirect: '/404'
-                    //除了有设置的路径之外所有路径都自动跳转到404
-                }
             ],
         },
         {
@@ -193,8 +195,84 @@ const router = new VueRouter({
             path: '/reg',
             component: Reg,
         },
+        {
+            path: '/404',
+            component: NotFound,
+        },
 
+        //404页面效果
+        {
+            path: '*',
+            redirect: '/404'
+            //除了有设置的路径之外所有路径都自动跳转到404
+        }
     ]
 })
+
+
+//全局路由守卫
+//beforeEach：在路由切换前执行
+router.beforeEach(function (to, from, next) {
+    //判断目标路由是否需要登录才可访问
+    // console.log('beforeEach', to, from);
+
+    console.log("to.fullPath=", to.fullPath)
+    // if (to.meta.requiresAuth) {
+    //     console.log("to.meta.requiresAuth=", to.meta.requiresAuth);
+    if (to.matched.some(item => item.meta.requiresAuth)) {
+        let currentUser = localStorage.getItem('currentUser') || {};
+        try {
+            currentUser = JSON.parse(currentUser)
+        } catch (err) {
+            currentUser = {};
+        }
+        // console.log('currentUser', currentUser);
+
+        //判断当前信息是否包含token
+        if (currentUser.authorization) {
+            console.log("currentUser.authorization=", currentUser.authorization);
+            //发起请求校验token的有效性
+            request.get('/jwtverify', {
+                params: {
+                    authorization: currentUser.authorization
+                }
+            }).then(({
+                data
+            }) => {
+                if (data.code === 0) {
+
+                    next({
+                        path: '/login',
+                        query: {
+                            // 跳转到登录页面，并传递目标页面路径
+                            redirectTo: to.fullPath
+                        }
+                    });
+                }
+            })
+            next();
+        } else {
+            // router.push('/login')
+            // router.push({
+            //     path:'/login'
+            // });
+            next({
+                path: '/login',
+                query: {
+                    // 跳转到登录页面，并传递目标页面路径
+                    redirectTo: to.fullPath
+                }
+            });
+        }
+    } else {
+        next();
+    }
+
+})
+
+//afterEach:路由切换完成
+// router.afterEach((to, from) => {
+
+// })
 
 export default router;
