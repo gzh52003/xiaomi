@@ -95,6 +95,7 @@ const router = new VueRouter({
                             path: '/',
                             redirect: 'list'
                         }, {
+                            name:'orderAdd',
                             path: 'add',
                             component: OrderAdd
                         },

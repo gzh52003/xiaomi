@@ -14,17 +14,41 @@ const {
 router.get('/', async (req, res) => {
     const {
         page,
-        size
+        size,
+        _id
     } = req.query 
-    console.log(page,size);
-    const data = await mongo.find('OrderList', {}, {
-        skip: (page-1)*size,
-        limit: size
-    })
+    console.log(page,size,_id);
+    
+    if (_id) {
+        try {
+            const data = await mongo.find('OrderList', {
+                _id
+            }, {})
 
-    res.send(sendDate({
-        data
-    }))
+            res.send(sendDate({
+                data
+            }))
+        } catch (err) {
+            res.send(sendDate({
+                code: 0
+            }))
+        }
+    } else{
+        try { const data = await mongo.find('OrderList', {}, {
+            skip: (page-1)*size,
+            limit: size
+        })
+    
+        res.send(sendDate({
+            data
+        }))}
+    catch(err){
+        res.send(sendDate({
+            code: 0
+        }))
+    }
+    }
+   
 })
 
 // 删除用户

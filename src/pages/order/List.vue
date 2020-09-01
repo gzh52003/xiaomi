@@ -54,7 +54,7 @@
         label="操作" width="150">
         <template v-slot:default="scope">
           <el-button type="danger" plain size="mini" @click="deleteOrder(scope.row._id)">删除</el-button>
-          <el-button type="success" plain size="mini" @click="goto(scope.row._id)">编辑</el-button>
+          <el-button type="success" plain size="mini" @click="addOrder(scope.row._id)">编辑</el-button>
           </template>
       </el-table-column>
     </el-table>
@@ -96,15 +96,29 @@ export default {
         this.currentPage = val;
       },
       async deleteOrder(id){
+        this.$confirm('你确定删除这条数据吗?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(async() => {
         const {data}=await this.$request.delete('/order/'+ id)
-        console.log(data)
         if(data.code==1){
-        this.dataList=this.dataList.filter(item=>item._id!=id)
+          this.dataList=this.dataList.filter(item=>item._id!==id)
         }
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });       
+        }); 
       },
-      goto(){
+      addOrder(id){
         //跳转路由传参
-        this.$request.push('/order/Add')
+        // this.$request.push('/order/Add.vue' + id)
+        this.$router.push({
+          name:'orderAdd',
+          query:{id},
+         
+      })
       }
     },
   async created(){
