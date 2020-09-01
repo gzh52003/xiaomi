@@ -35,7 +35,7 @@ router.get("/", async (req, res) => {
     // console.log("这是一个长度", result.length);
     if (result.length > 0) {
         // 用户名、密码、验证码都校验通过后，判断是否有免登陆选项
-        console.log('req.query=', req.query);
+        // console.log('req.query=', req.query);
         let authorization;
         if (checked == 'true') {
             // token的操作
@@ -48,7 +48,7 @@ router.get("/", async (req, res) => {
             authorization = token.create({
                 username
             }, "7d")
-            console.log("token寿命=", authorization);
+            // console.log("token寿命=", authorization);
         } else {
             authorization = token.create({
                 username

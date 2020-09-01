@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
    // 把验证码存入会话Session
    req.session.vcode = captcha.text.toLowerCase();
 
-   console.log('vcode.session=', req.session);
+   // console.log('vcode.session=', req.session);
    res.send(formatData({
       data: captcha.data
    }));

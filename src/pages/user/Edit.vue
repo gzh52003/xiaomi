@@ -64,13 +64,18 @@ export default {
       const _id = this.$route.params.id;
       console.log(this.$refs.imgUpload.files[0]);
       const params = new FormData();
+      params.append("imgFolder", "user");
       params.append("haoge", this.$refs.imgUpload.files[0]);
-      const { data } = await this.$request.put("upload/avatar/" + _id, params, {
-        contentType: false, // 不需要自定义content-type
-        // headers:{
-        //     'Content-Type':'multipart/form-data'
-        // }
-      });
+      const { data } = await this.$request.post(
+        "upload/avatar/" + _id,
+        params,
+        {
+          contentType: false, // 不需要自定义content-type
+          // headers:{
+          //     'Content-Type':'multipart/form-data'
+          // }
+        }
+      );
       // console.log(data);
       this.url = "http://localhost:2003/" + data.data; // 访问 服务器的图片地址
     },

@@ -24,21 +24,27 @@
           <el-form-item label="现价" prop="product_price">
             <el-input v-model.number="data.product_price"></el-input>
           </el-form-item>
-
+          <el-form-item label="商品图片" prop="img">
+            <el-upload
+              class="upload-demo"
+              action="http://localhost:2003/api/upload/avatar/"
+              name="goods"
+              :data="{'imgFolder': 'goods'}"
+              :on-success="success"
+              :multiple="true"
+              :limit="5"
+              list-type="picture"
+            >
+              <el-button size="small" type="primary">点击上传</el-button>
+              <div slot="tip" class="el-upload__tip">上传商品图片，最多五张</div>
+            </el-upload>
+          </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submit">提交</el-button>
             <el-button>重置</el-button>
           </el-form-item>
         </el-form>
       </el-col>
-      <!-- <el-col :span="8">
-        <div class="demo-image__preview" style=" display:block;">
-          <el-image style="width: 100px; height: 100px" :src="url"></el-image>
-        </div>
-        <el-form status-icon width="100px" style="width:100px; display:block;">
-          <input type="file" @change="imgurlChange" ref="imgUpload" />
-        </el-form>
-      </el-col>-->
     </el-row>
   </div>
 </template>
@@ -50,44 +56,39 @@ export default {
     };
   },
   async beforeCreate() {
-    // 对 得到的数据库进行 字段 筛选，不返回密码
     const _id = this.$route.params.id;
     const {
       data: { data },
     } = await this.$request.get("/goods", { params: { _id } });
     this.data = data[0];
   },
+
   methods: {
-    // async imgurlChange() {
-    //   // console.log(this.imgurl);
-    //   const _id = this.$route.params.id;
-    //   console.log(this.$refs.imgUpload.files[0]);
-    //   const params = new FormData();
-    //   params.append("haoge", this.$refs.imgUpload.files[0]);
-    //   const { data } = await this.$request.put("upload/avatar/" + _id, params, {
-    //     contentType: false, // 不需要自定义content-type
-    //     // headers:{
-    //     //     'Content-Type':'multipart/form-data'
-    //     // }
-    //   });
-    //   // console.log(data);
-    //   this.url = "http://localhost:2003/" + data.data; // 访问 服务器的图片地址
-    // },
+    success(response) {
+      // console.log(response);
+      const { data } = response;
+      this.data.img_url.push("http://localhost:2003" + data);
+      // console.log(this.data.img_url);
+    },
     async submit() {
+      console.log(this.data);
       const {
         _id,
         product_name,
         product_brief,
         product_price,
         product_org_price,
+        img_url,
       } = this.data;
+
       const { data } = await this.$request.put("/goods/" + _id, {
         product_name,
         product_brief,
         product_price,
         product_org_price,
+        img_url,
       });
-      console.log(data);
+      // console.log(data);
       if (data.code === 1) {
         this.$message({
           type: "success",

@@ -14,7 +14,7 @@
         <el-table-column type="index" label="#" width="55"></el-table-column>
         <el-table-column prop="img_url" label="商品图片" width="120">
           <template v-slot:default="scope">
-            <img :src="scope.row.img_url" alt />
+            <img :src="scope.row.img_url[0]" alt />
           </template>
         </el-table-column>
         <el-table-column prop="goods_name" label="商品名称" width="600">
@@ -82,7 +82,10 @@ export default {
       },
     });
     this.goodsList = data.data;
+    // if(goodsList.img_url )
+    // console.log(Object.prototype.toString.call([]));
     this.total = data.total;
+
     // console.log(data);
   },
   methods: {

@@ -44,7 +44,7 @@ router.get('/jwtverify', (req, res) => {
     const {
         authorization
     } = req.query;
-    console.log('test', authorization)
+    // console.log('test', authorization)
 
     // verify方法校验成功：得到一个对象
     // verify方法校验不通过：直接抛出错误

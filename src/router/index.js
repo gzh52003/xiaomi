@@ -224,7 +224,7 @@ router.beforeEach(function (to, from, next) {
     //判断目标路由是否需要登录才可访问
     // console.log('beforeEach', to, from);
 
-    console.log("to.fullPath=", to.fullPath)
+    // console.log("to.fullPath=", to.fullPath)
     // if (to.meta.requiresAuth) {
     //     console.log("to.meta.requiresAuth=", to.meta.requiresAuth);
     if (to.matched.some(item => item.meta.requiresAuth)) {
@@ -238,7 +238,7 @@ router.beforeEach(function (to, from, next) {
 
         //判断当前信息是否包含token
         if (currentUser.authorization) {
-            console.log("currentUser.authorization=", currentUser.authorization);
+            // console.log("currentUser.authorization=", currentUser.authorization);
             //发起请求校验token的有效性
             request.get('/jwtverify', {
                 params: {

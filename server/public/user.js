@@ -211,7 +211,7 @@ router.put("/changepsw", async (req, res) => {
         username,
         password,
     } = req.body
-    console.log("这是账号密码", username, password)
+    // console.log("这是账号密码", username, password)
     try {
         const result = await update('userList', {
             username

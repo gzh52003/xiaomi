@@ -81,6 +81,7 @@ router.post('/', async (req, res) => {
         product_brief,
         product_price,
         product_org_price,
+        img_url
     } = req.body
 
     try {
@@ -89,6 +90,7 @@ router.post('/', async (req, res) => {
             product_brief,
             product_price,
             product_org_price,
+            img_url
         })
         res.send(sendDate({}))
     } catch (err) {
@@ -109,6 +111,7 @@ router.put("/:_id", async (req, res) => {
         product_brief,
         product_price,
         product_org_price,
+        img_url
     } = req.body
 
     // console.log(username, gender, role)
@@ -117,6 +120,7 @@ router.put("/:_id", async (req, res) => {
         product_brief,
         product_price,
         product_org_price,
+        img_url
     }
     console.log(newdata)
     try {
