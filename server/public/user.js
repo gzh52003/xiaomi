@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
         }
     }
 })
-// 查找用户是否存在
+// 查找用户
 router.get('/checkname', async (req, res) => {
     const {
         username
@@ -61,14 +61,45 @@ router.get('/checkname', async (req, res) => {
         const data = await mongo.find('userList', {
             username
         }, {})
-
-        // 长度为零时，说明用户名不存在，返回成功 code =1
         if (data.length == 0) {
             res.send(sendDate({}))
         } else {
             res.send(sendDate({
                 code: 0
             }))
+        }
+    } catch (err) {
+        res.send(sendDate({
+            code: 0
+        }))
+    }
+
+})
+
+// 查找密码
+router.get('/checkpsw', async (req, res) => {
+    const {
+        username,
+        password
+    } = req.query
+
+    // console.log("username=", username)
+    // console.log("password=", password)
+    try {
+        const data = await mongo.find('userList', {
+            username,
+
+        }, {})
+        // console.log(data[0].password)
+
+        if (data.length != 0) {
+            if (data[0].password == password) {
+                res.send(sendDate({}))
+            } else {
+                res.send(sendDate({
+                    code: 0
+                }))
+            }
         }
     } catch (err) {
         res.send(sendDate({
@@ -123,11 +154,11 @@ router.post('/', async (req, res) => {
     }
 })
 // 编辑用户信息
-router.put("/:_id", async (req, res) => {
+router.put("/edit/:_id", async (req, res) => {
     const {
         _id,
     } = req.params
-    console.log(_id)
+    // console.log(_id)
     // 编辑用户信息，某条不做编辑时，输入框也是存在数据的，不会出现为空的问题？
     const {
         username,
@@ -135,7 +166,7 @@ router.put("/:_id", async (req, res) => {
         role,
         gender
     } = req.body
-    console.log(username, gender, role)
+    // console.log(username, gender, role)
     const newdata = {
         username,
         password,
@@ -144,15 +175,44 @@ router.put("/:_id", async (req, res) => {
     }
     try {
         const result = await update('userList', {
-            _id
+            username
         }, {
             $set: newdata
         })
         res.send(sendDate({
             data: {
-                _id,
                 ...newdata
             }
+        }))
+    } catch (err) {
+        res.send(sendDate({
+            code: 0
+        }))
+    }
+})
+
+// 编辑密码信息
+router.put("/changepsw", async (req, res) => {
+    // const {
+    //     _id,
+    // } = req.params
+    // console.log(_id)
+    // 编辑用户信息，某条不做编辑时，输入框也是存在数据的，不会出现为空的问题？
+    const {
+        username,
+        password,
+    } = req.body
+    console.log("这是账号密码", username, password)
+    try {
+        const result = await update('userList', {
+            username
+        }, {
+            $set: {
+                password
+            }
+        })
+        res.send(sendDate({
+            data: {}
         }))
     } catch (err) {
         res.send(sendDate({
