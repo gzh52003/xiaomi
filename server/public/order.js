@@ -77,6 +77,7 @@ router.delete("/:_id", async (req, res) => {
 router.post('/', async (req, res) => {
     const {
         orderNumber='',
+        orderTime='',
         amount='',
         monetary='',
         done=false,
@@ -86,6 +87,7 @@ router.post('/', async (req, res) => {
     try {
         const result = await mongo.insert('OrderList', {
             orderNumber,
+            orderTime,
             amount,
             monetary,
             done,
@@ -108,6 +110,7 @@ router.put("/:_id", async (req, res) => {
     // 编辑用户信息，某条不做编辑时，输入框也是存在数据的，不会出现为空的问题？
     const {
         orderNumber='',
+        orderTime='',
         amount='',
         monetary='',
         done=false,
@@ -116,11 +119,12 @@ router.put("/:_id", async (req, res) => {
     } = req.body
     const newdata = {
         orderNumber,
-            amount,
-            monetary,
-            done,
-            deliveryTime,
-            remarks,
+        orderTime,
+        amount,
+        monetary,
+        done,
+        deliveryTime,
+        remarks,
     }
     try {
         const result = await update('OrderList', {

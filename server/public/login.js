@@ -47,7 +47,7 @@ router.get("/", async (req, res) => {
 
             authorization = token.create({
                 username
-            }, 30)
+            }, '7d')
             console.log("token寿命=", authorization);
         } else {
             authorization = token.create({
