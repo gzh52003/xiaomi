@@ -324,10 +324,12 @@ export default {
           icon: "el-icon-s-order",
           submenu: [
             {
+              name: "orderList",
               text: "订单列表",
               path: "/list",
             },
             {
+              name: "orderAdd",
               text: "订单处理",
               path: "/add",
             },

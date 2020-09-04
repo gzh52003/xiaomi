@@ -32,7 +32,7 @@ import Order from '../pages/order/Default.vue'
 import OrderAdd from '../pages/order/Add.vue'
 import OrderList from '../pages/order/List.vue'
 import OrderDelete from '../pages/order/Delete.vue'
-import OrderEdit from '../pages/order/Edit.vue'
+// import OrderEdit from '../pages/order/Edit.vue'
 
 
 import Home from '../pages/Home.vue'
@@ -113,6 +113,7 @@ const router = new VueRouter({
                             path: '/',
                             redirect: 'list'
                         }, {
+                            name:'orderAdd',
                             path: 'add',
                             component: OrderAdd
                         },
@@ -125,7 +126,7 @@ const router = new VueRouter({
                             component: OrderDelete
                         }, {
                             path: 'Edit',
-                            component: OrderEdit
+                            component: OrderAdd
                         },
                     ]
                 },
