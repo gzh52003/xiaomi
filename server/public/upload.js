@@ -109,12 +109,6 @@ router.post('/avatar', uploadMiddleware.array('goods', 5), async (req, res) => {
     // console.log('file=', req.file, req.body);
 
 
-
-    // console.log(req.files)
-    // 文件地址
-    // console.log(imgFolder)
-
-
     // req.files[0].filename.forEach(item => {
     let avatarUrl = '/uploads/goods/' + req.files[0].filename
 

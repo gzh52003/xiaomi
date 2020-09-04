@@ -229,7 +229,7 @@ export default {
         ],
       },
 
-      activeIndex: "/home",
+      activeIndex: this.$route.path,
       //默认首页为home
       openMenu: [],
       menu: [

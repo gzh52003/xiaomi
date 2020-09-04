@@ -1,6 +1,6 @@
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc190e"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d880ff45a9a3b70527770e01521fc939.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/d880ff45a9a3b70527770e01521fc939.jpg"],
     "product_id": 12609,
     "product_name": "小米10 至尊版",
     "product_brief": "120X 变焦/120W秒充/120Hz屏幕",
@@ -17,7 +17,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1911"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3b19bf0e7e599c1bbbce510fb0dbc8bc.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/3b19bf0e7e599c1bbbce510fb0dbc8bc.jpg"],
     "product_id": 12605,
     "product_name": "Redmi K30 至尊版",
     "product_brief": "120Hz弹出全面屏，天玑1000+旗舰处理器",
@@ -34,7 +34,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1914"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/237942bfcaf2bbe82fbe966c2f584d69.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/237942bfcaf2bbe82fbe966c2f584d69.jpg"],
     "product_id": 12517,
     "product_name": "腾讯黑鲨3S ",
     "product_brief": "骁龙865处理器，120Hz刷新率",
@@ -51,7 +51,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc191d"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/0099822e42b4428cb25c4cdebc6ca53d.jpg"],
     "product_id": 10000214,
     "product_name": "小米10",
     "product_brief": "骁龙865/1亿像素相机",
@@ -68,7 +68,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1920"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c1aafa589258a4d9fdf49831b457418d.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/c1aafa589258a4d9fdf49831b457418d.jpg"],
     "product_id": 10000223,
     "product_name": " Redmi K30 Pro",
     "product_brief": "双模5G，骁龙865，弹出全面屏",
@@ -85,7 +85,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1923"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7cfdbce40301133a287e9e57faa37bdf.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/7cfdbce40301133a287e9e57faa37bdf.jpg"],
     "product_id": 11763,
     "product_name": "Redmi K30 Pro 变焦版",
     "product_brief": "双模5G，骁龙865，弹出全面屏",
@@ -102,7 +102,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1926"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ef4c68fed730ec26bf2fa0ff620975c5.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/ef4c68fed730ec26bf2fa0ff620975c5.jpg"],
     "product_id": 10650,
     "product_name": "Redmi 红米电视 70英寸 ",
     "product_brief": "70英寸震撼巨屏，4K画质，细腻如真",
@@ -119,7 +119,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1929"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8b3fe3a07ef69fb4c959e39c768c7525.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/8b3fe3a07ef69fb4c959e39c768c7525.jpg"],
     "product_id": 10126,
     "product_name": "小米全面屏电视E32C",
     "product_brief": "全面屏设计，人工智能系统",
@@ -136,7 +136,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc192c"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ef6b4e9b9151849b3b1fb1dbf069c6ed.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/ef6b4e9b9151849b3b1fb1dbf069c6ed.jpg"],
     "product_id": 9668,
     "product_name": "小米全面屏电视E55A",
     "product_brief": "全面屏设计，人工智能语音",
@@ -170,7 +170,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1932"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ec20453216dcd42f982cffe5fdbc3115.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/ec20453216dcd42f982cffe5fdbc3115.jpg"],
     "product_id": 9963,
     "product_name": "米家互联网洗烘一体机 Pro 10kg",
     "product_brief": "智能洗烘，省心省力",
@@ -187,7 +187,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1935"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8c63a2024528fe5410ebe669b7d2407.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/b8c63a2024528fe5410ebe669b7d2407.jpg"],
     "product_id": 9509,
     "product_name": "Redmi全自动波轮洗衣机1A 8kg",
     "product_brief": "一键操作，父母都爱用",
@@ -204,7 +204,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1938"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cd2aa2dcad6440b469c22e27db9b6236.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/cd2aa2dcad6440b469c22e27db9b6236.jpg"],
     "product_id": 10253,
     "product_name": "15.6\" 四核i7 16G 独显 512G",
     "product_brief": "全面均衡的国民轻薄本",
@@ -221,7 +221,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc193b"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/74e573c4c0d89048392d14831cc507d5.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/74e573c4c0d89048392d14831cc507d5.jpg"],
     "product_id": 10000142,
     "product_name": "Air 13.3\" 2019款 ",
     "product_brief": "新一代独立显卡",
@@ -238,7 +238,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc193e"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3483b4ec83f3d085c567633f2edef1c1.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/3483b4ec83f3d085c567633f2edef1c1.jpg"],
     "product_id": 8041,
     "product_name": "小米电视4C 32英寸",
     "product_brief": "高清液晶屏，人工智能系统",
@@ -255,7 +255,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1941"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f193daba3989eadac5e13ae102b91582.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/f193daba3989eadac5e13ae102b91582.jpg"],
     "product_id": 10909,
     "product_name": "全面屏电视 55英寸E55X",
     "product_brief": "潮流全面屏设计",
@@ -272,7 +272,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1944"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9d8674cd21c486feff5328772ab9cf01.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/9d8674cd21c486feff5328772ab9cf01.jpg"],
     "product_id": 10764,
     "product_name": "小米电视4A 70英寸\t",
     "product_brief": "大屏更享受",
@@ -289,7 +289,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1947"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8156dec11073b1f98db8e4b7598262a4.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/8156dec11073b1f98db8e4b7598262a4.jpg"],
     "product_id": 6850,
     "product_name": "小米电视4C 43英寸",
     "product_brief": "FHD全高清屏，钢琴烤漆",
@@ -323,7 +323,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc194d"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6a3d09cb5b895f8c3706f513552cd53d.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/6a3d09cb5b895f8c3706f513552cd53d.jpg"],
     "product_id": 10911,
     "product_name": "小米全面屏电视65英寸 E65C",
     "product_brief": "震撼大屏，时尚全面屏",
@@ -340,7 +340,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1950"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8b3fe3a07ef69fb4c959e39c768c7525.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/8b3fe3a07ef69fb4c959e39c768c7525.jpg"],
     "product_id": 10126,
     "product_name": "小米全面屏电视E32C",
     "product_brief": "全面屏设计，人工智能系统",
@@ -357,7 +357,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1953"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0e7eee530e4a103f2f5a0937a14bed53.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/0e7eee530e4a103f2f5a0937a14bed53.jpg"],
     "product_id": 9689,
     "product_name": "小米壁画电视 65英寸",
     "product_brief": "壁画外观，全面屏，远场语音",
@@ -374,7 +374,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1956"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/011dd8493ad62f3793dbb63d9fbd3bc0.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/011dd8493ad62f3793dbb63d9fbd3bc0.jpg"],
     "product_id": 10000159,
     "product_name": "小米「小爱老师」",
     "product_brief": "英语提分利器",
@@ -391,7 +391,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1959"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f0914c60fa1ab807972541b4e2b1a4cd.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/f0914c60fa1ab807972541b4e2b1a4cd.jpg"],
     "product_id": 12147,
     "product_name": "小米智能门锁 E",
     "product_brief": "告别钥匙，畅享便捷生活",
@@ -408,7 +408,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc195c"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e7c6e79433c883e1a022ec21402c1679.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/e7c6e79433c883e1a022ec21402c1679.jpg"],
     "product_id": 10015,
     "product_name": "小米小爱音箱 Play",
     "product_brief": "听音乐、语音遥控家电",
@@ -425,7 +425,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc195f"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/44a30f0da2aacb66a0f896293ebc703f.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/44a30f0da2aacb66a0f896293ebc703f.jpg"],
     "product_id": 9536,
     "product_name": "小爱音箱万能遥控版",
     "product_brief": "传统家电秒变智能",
@@ -442,7 +442,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1962"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b42e49c6c0208f2de5a2f7a491a3af46.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/b42e49c6c0208f2de5a2f7a491a3af46.jpg"],
     "product_id": 9990,
     "product_name": "米家电饭煲4L",
     "product_brief": "890W 立体加热 ",
@@ -459,7 +459,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1965"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e850fa029579ba886e3d5c81f00ae534.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/e850fa029579ba886e3d5c81f00ae534.jpg"],
     "product_id": 9997,
     "product_name": "小米手环4",
     "product_brief": "大屏彩显，20天超长续航",
@@ -476,7 +476,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1968"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3accd497afc0047cfbd40f442e3b17df.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/3accd497afc0047cfbd40f442e3b17df.jpg"],
     "product_id": 12274,
     "product_name": "米家智能窗帘",
     "product_brief": "窗帘开合随心控",
@@ -493,7 +493,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc196b"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/550177d2e54387521bce9e78cb2949dd.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/550177d2e54387521bce9e78cb2949dd.jpg"],
     "product_id": 9686,
     "product_name": "小米体脂秤2",
     "product_brief": "轻松掌握身体脂肪率",
@@ -510,7 +510,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc196e"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2f33baec53cc73e2942277640ba6e710.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/2f33baec53cc73e2942277640ba6e710.jpg"],
     "product_id": 9120,
     "product_name": "米家智能门锁 标准锁体 碳素黑",
     "product_brief": "一体化活体指纹识别，多种开锁方式",
@@ -527,7 +527,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1971"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1840f64ea310ca8013385885baaf16a8.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/1840f64ea310ca8013385885baaf16a8.jpg"],
     "product_id": 10303,
     "product_name": "米家智能门锁 标准锁体 磨砂金",
     "product_brief": "全新磨砂金配色，精湛工艺升级",
@@ -544,7 +544,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1974"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0baacf6e54cbf89cab2c543cc02344e9.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/0baacf6e54cbf89cab2c543cc02344e9.jpg"],
     "product_id": 10025,
     "product_name": "米家智能门锁 推拉式 通用版",
     "product_brief": "一步推拉，高端智能门锁",
@@ -561,7 +561,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1977"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0245498a0e08b87ba8c323871c5d48bc.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/0245498a0e08b87ba8c323871c5d48bc.jpg"],
     "product_id": 10345,
     "product_name": "米家智能门锁 青春版",
     "product_brief": "隐形指纹识别设计 简单一步快进家门",
@@ -578,7 +578,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc197a"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e83e1ab5947337d7b631e056b3e0f23d.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/e83e1ab5947337d7b631e056b3e0f23d.jpg"],
     "product_id": 9850,
     "product_name": "米家智能门锁 霸王锁体 碳素黑",
     "product_brief": "一体化活体指纹识别，多种开锁方式",
@@ -595,7 +595,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc197d"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fa7cdb455f106da904e8c3f6156abc06.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/fa7cdb455f106da904e8c3f6156abc06.jpg"],
     "product_id": 10304,
     "product_name": "米家智能门锁 霸王锁体 磨砂金",
     "product_brief": "适配霸王锁体，多种开锁方式",
@@ -697,7 +697,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc198f"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0294e2f3997bf0cffb7bf48361d03588.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/0294e2f3997bf0cffb7bf48361d03588.jpg"],
     "product_id": 9613,
     "product_name": "米家充气宝",
     "product_brief": "便携电动打气筒",
@@ -714,7 +714,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1992"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/12fe0ea5e8dafecce5ffa65108796683.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/12fe0ea5e8dafecce5ffa65108796683.jpg"],
     "product_id": 11674,
     "product_name": "小米小背包",
     "product_brief": "城市休闲，简约设计",
@@ -731,7 +731,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1995"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5b4304d0e62a9c874e83eba0649110ee.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/5b4304d0e62a9c874e83eba0649110ee.jpg"],
     "product_id": 9560,
     "product_name": "小米旅行箱 青春款",
     "product_brief": "环保材料，轻便重量",
@@ -748,7 +748,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1998"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3520b7c57449585bc3185d31b9d9bd08.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/3520b7c57449585bc3185d31b9d9bd08.jpg"],
     "product_id": 11368,
     "product_name": "骑记电动助力自行车 新国标版 黑色",
     "product_brief": "更多助力选择，更多城市风景",
@@ -765,7 +765,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc199b"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d86c1eb8f5525bc4c76c8e0e98db7446.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/d86c1eb8f5525bc4c76c8e0e98db7446.jpg"],
     "product_id": 9550,
     "product_name": "小米米家对讲机2",
     "product_brief": "向更远出发",
@@ -782,7 +782,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc199e"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/50649d7b5706f4cd9f658e93db6b6564.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/50649d7b5706f4cd9f658e93db6b6564.jpg"],
     "product_id": 10859,
     "product_name": "小米真无线蓝牙耳机 Air 2",
     "product_brief": "智能真无线，轻松舒适戴",
@@ -799,7 +799,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19a1"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9eb0178e3bfeb7d170edd641fb4be4bc.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/9eb0178e3bfeb7d170edd641fb4be4bc.jpg"],
     "product_id": 9311,
     "product_name": "高速无线充套装",
     "product_brief": "快速无线闪充，Qi充电标准",
@@ -816,7 +816,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19a4"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ea8e42faebf7d76a4cb42b8930cf9e46.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/ea8e42faebf7d76a4cb42b8930cf9e46.jpg"],
     "product_id": 10317,
     "product_name": "Redmi充电宝 10000mAh 标准版 白色",
     "product_brief": "10000mAh大电量 ",
@@ -833,7 +833,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19a7"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/eaf70e0e9905de6452f07b1f48fcc386.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/eaf70e0e9905de6452f07b1f48fcc386.jpg"],
     "product_id": 10318,
     "product_name": "Redmi充电宝 20000mAh 快充版",
     "product_brief": "大容量，\t可上飞机 ",
@@ -884,7 +884,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19b0"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9946e252a7c49662376c056ced004a20.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/9946e252a7c49662376c056ced004a20.jpg"],
     "product_id": 9334,
     "product_name": "小米小爱触屏音箱",
     "product_brief": "好听，更好看",
@@ -901,7 +901,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19b3"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/601d1ac94ca155a59a813bff1045e8b3.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/601d1ac94ca155a59a813bff1045e8b3.jpg"],
     "product_id": 12090,
     "product_name": "小米无线车充通用快充版",
     "product_brief": "通用快充",
@@ -918,7 +918,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19b6"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/50649d7b5706f4cd9f658e93db6b6564.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/50649d7b5706f4cd9f658e93db6b6564.jpg"],
     "product_id": 10859,
     "product_name": "小米真无线蓝牙耳机 Air 2",
     "product_brief": "智能真无线，轻松舒适戴",
@@ -935,7 +935,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19b9"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/faf8668acb2fd80c0afad4d4c4e837ad.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/faf8668acb2fd80c0afad4d4c4e837ad.jpg"],
     "product_id": 10316,
     "product_name": "小米降噪项圈蓝牙耳机",
     "product_brief": "无线降噪，静无止境",
@@ -969,7 +969,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19bf"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8b619d27877bbc497468c673a317a847.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/8b619d27877bbc497468c673a317a847.jpg"],
     "product_id": 10745,
     "product_name": "小米小爱音箱 Pro",
     "product_brief": "语音遥控5000+品牌主流家电",
@@ -986,7 +986,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19c2"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e6a35e4dfff70f4195b29e8008716d82.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/e6a35e4dfff70f4195b29e8008716d82.jpg"],
     "product_id": 8585,
     "product_name": "小米运动蓝牙耳机青春版",
     "product_brief": "音随你动",
@@ -1054,7 +1054,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19ce"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9eb0178e3bfeb7d170edd641fb4be4bc.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/9eb0178e3bfeb7d170edd641fb4be4bc.jpg"],
     "product_id": 9311,
     "product_name": "高速无线充套装",
     "product_brief": "快速无线闪充，Qi充电标准",
@@ -1071,7 +1071,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19d1"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1f32af53d1ad60f4980146f6a2b81019.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/1f32af53d1ad60f4980146f6a2b81019.jpg"],
     "product_id": 10721,
     "product_name": "小米无线充电宝青春版10000mAh",
     "product_brief": "能量满满，无线有线都能充",
@@ -1105,7 +1105,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19d7"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f8fde8a877fd4b12ad88119d9b6bc061.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/f8fde8a877fd4b12ad88119d9b6bc061.jpg"],
     "product_id": 11543,
     "product_name": "小米GaN充电器 Type-C 65W ",
     "product_brief": "氮化镓黑科技 65W MAX 大功率快充",
@@ -1156,7 +1156,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19e0"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/50649d7b5706f4cd9f658e93db6b6564.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/50649d7b5706f4cd9f658e93db6b6564.jpg"],
     "product_id": 10859,
     "product_name": "小米真无线蓝牙耳机 Air 2",
     "product_brief": "智能真无线，轻松舒适戴",
@@ -1173,7 +1173,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19e3"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6c19fad90ad73f91e13c97cce2b15d82.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/6c19fad90ad73f91e13c97cce2b15d82.jpg"],
     "product_id": 9355,
     "product_name": "小米9 SE 街头风保护壳",
     "product_brief": "简约时尚，多彩三色",
@@ -1190,7 +1190,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19e6"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/971da2015fe533acebbca413f88084ab.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/971da2015fe533acebbca413f88084ab.jpg"],
     "product_id": 12176,
     "product_name": "小米Type-C充电器65W 疾速闪充版",
     "product_brief": "疾速闪充",
@@ -1207,7 +1207,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19e9"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f8fde8a877fd4b12ad88119d9b6bc061.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/f8fde8a877fd4b12ad88119d9b6bc061.jpg"],
     "product_id": 11543,
     "product_name": "小米GaN充电器 Type-C 65W ",
     "product_brief": "氮化镓黑科技 65W MAX 大功率快充",
@@ -1224,7 +1224,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19ec"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/15ac53312f850bfcc73bdc5a185fda8a.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/15ac53312f850bfcc73bdc5a185fda8a.jpg"],
     "product_id": 10860,
     "product_name": "小米立式风冷无线充 30W ",
     "product_brief": "解锁充电新姿势",
@@ -1241,7 +1241,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19ef"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/bb115b0d5e6cc24c39c1ae818b63bf1a.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/bb115b0d5e6cc24c39c1ae818b63bf1a.jpg"],
     "product_id": 11226,
     "product_name": "小米立式无线充电器 通用快充20W",
     "product_brief": "横竖可充，迅速感应边充边玩",
@@ -1258,7 +1258,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19f2"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/69167d20371cb65e58ad792494d5bf63.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/69167d20371cb65e58ad792494d5bf63.jpg"],
     "product_id": 11483,
     "product_name": "小米无线充电器（通用快充）",
     "product_brief": "铝合金外观，金属质感好",
@@ -1275,7 +1275,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19f5"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c85b67f1c4f5e460a4be5cea5858264b.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/c85b67f1c4f5e460a4be5cea5858264b.jpg"],
     "product_id": 11384,
     "product_name": "米家智能插座蓝牙网关版",
     "product_brief": "让传统家电变智能",
@@ -1326,7 +1326,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc19fe"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cccac948e1b8ffb47f1fecde67692e60.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/cccac948e1b8ffb47f1fecde67692e60.jpg"],
     "product_id": 9732,
     "product_name": "米家飞行员太阳镜 Pro",
     "product_brief": "尼龙偏光，轻巧佩戴",
@@ -1343,7 +1343,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1a01"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/57433a4b991b2a2ddc889f2d8d434655.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/57433a4b991b2a2ddc889f2d8d434655.jpg"],
     "product_id": 9836,
     "product_name": "小米巨能写中性笔10支装",
     "product_brief": "一支顶4支，超长顺滑书写",
@@ -1360,7 +1360,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1a04"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/03d94ee6059481a6adcb6c4c5c572fb4.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/03d94ee6059481a6adcb6c4c5c572fb4.jpg"],
     "product_id": 10480,
     "product_name": "米家迷你保温杯",
     "product_brief": "可以随身携带的温度",
@@ -1377,7 +1377,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1a07"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/41e6890f9d6b7fdb4275c986dc3644e8.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/41e6890f9d6b7fdb4275c986dc3644e8.jpg"],
     "product_id": 9723,
     "product_name": "米家驱蚊器基础版 3个装",
     "product_brief": "3个装 长效驱蚊",
@@ -1428,7 +1428,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1a10"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3f217393625879fb2e29a86bb49c569.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/d3f217393625879fb2e29a86bb49c569.jpg"],
     "product_id": 12639,
     "product_name": "米家负离子速干吹风机 H300",
     "product_brief": "小巧精悍，速干小超人",
@@ -1445,7 +1445,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1a13"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d0b1119165c481376399aab53330e015.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/d0b1119165c481376399aab53330e015.jpg"],
     "product_id": 11874,
     "product_name": "米家运动鞋4",
     "product_brief": "轻盈若絮,弹若脱兔",
@@ -1462,7 +1462,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1a16"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d26d3a80dd1ab0c6a657f13cb234dade.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/d26d3a80dd1ab0c6a657f13cb234dade.jpg"],
     "product_id": 10000147,
     "product_name": "90分框体旅行箱",
     "product_brief": "专利轻量合金中框，轻盈坚固 ",
@@ -1479,7 +1479,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1a19"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/47ecc65d37065fde1e71b1b34326e741.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/47ecc65d37065fde1e71b1b34326e741.jpg"],
     "product_id": 10181,
     "product_name": "小米商旅多功能双肩包 2",
     "product_brief": "商务旅行多场景，切换无压力",
@@ -1496,7 +1496,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1a1c"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cccac948e1b8ffb47f1fecde67692e60.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/cccac948e1b8ffb47f1fecde67692e60.jpg"],
     "product_id": 9732,
     "product_name": "米家飞行员太阳镜 Pro",
     "product_brief": "尼龙偏光，轻巧佩戴",
@@ -1564,7 +1564,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1a28"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/aabf1a475043266cf4759ec58d0f679c.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/aabf1a475043266cf4759ec58d0f679c.jpg"],
     "product_id": 9285,
     "product_name": "小米米家电动滑板车Pro",
     "product_brief": "性能提升，动力更强劲",
@@ -1581,7 +1581,7 @@
 
 {
     "_id": ObjectId("5f3f812d0aa5c27443bc1a2b"),
-    "img_url": ["https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9871569c0b49b769bd74f5cce81e45a.jpg"],
+    "img_url": ["http://localhost:2003/uploads/goods/c9871569c0b49b769bd74f5cce81e45a.jpg"],
     "product_id": 9729,
     "product_name": "米家经典方框太阳镜",
     "product_brief": "复古设计，偏光自修复",
@@ -1593,14 +1593,4 @@
         "path": "https://www.mi.com/buy?product_id=9729",
         "log_code": "31pchomepagelist_eight_product_tab007001#t=product&act=product&page=homepage&pid=9729&page_id=10530&bid=3480948.20"
     }
-}
-
-
-{
-    "_id": ObjectId("5f48ccd8b4f96c095c2b55d8"),
-    "username": "",
-    "password": "",
-    "role": "",
-    "gender": "",
-    "imgUrl": "uploads/haoge-1598500381948.jpg"
 }

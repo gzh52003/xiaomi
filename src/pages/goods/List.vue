@@ -56,10 +56,10 @@
       layout="prev, pager, next"
       style="text-align:center;margin:50px 0"
       :total="total"
-      :page-size="8"
-      :current-page="page"
       @current-change="pageChange"
     ></el-pagination>
+    <!-- :page-size="8"
+    :current-page="page"-->
   </div>
 </template>
 <script>
