@@ -11,6 +11,7 @@ const regRouter = require("./reg")
 const loginRouter = require("./login")
 const orderRouter = require("./order")
 const uploadRouter = require("./upload")
+const goodsRouter = require("./goods")
 const vcodeRouter = require("./vcode")
 
 const cors = require("./cors")
@@ -21,6 +22,7 @@ router.use(express.urlencoded({
     extended: false
 }), express.json())
 
+router.use("/goods", goodsRouter)
 router.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -42,7 +44,7 @@ router.get('/jwtverify', (req, res) => {
     const {
         authorization
     } = req.query;
-    console.log('test', authorization)
+    // console.log('test', authorization)
 
     // verify方法校验成功：得到一个对象
     // verify方法校验不通过：直接抛出错误

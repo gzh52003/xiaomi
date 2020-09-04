@@ -99,12 +99,28 @@ async function find(colName, query = {}, options = {}) {
     } = await connect();
     const collection = db.collection(colName);
 
-    // 查询到数据集合
-    let result = collection.find(query); // 50->10
 
+
+
+    // 定义 Opt 为一个空对象，若 传的参数有 field
+    //  则  opt.projection = options.field; 对返回的字段
+    // 进行筛选, 没传则为 空,不进行筛选
+    const opt = {}
+
+    if (options.field) {
+        opt.projection = options.field;
+    }
+
+    let result = collection.find(query, opt); // 50->10
+
+    const count = await result.count()
+    // console.log(count)
+    // 查询到数据集合
     if (query._id && typeof query._id === 'string') {
         query._id = ObjectId(query._id);
     }
+
+
     // 判断是否要跳过记录， skip 跳过指定数量
     if (options.skip) {
         result = result.skip(options.skip - 0)
@@ -136,7 +152,15 @@ async function find(colName, query = {}, options = {}) {
     result = await result.toArray();
     client.close();
 
-    return result
+    // 当 options.total== 1 ，说明需要返回数据的总数 
+    if (options.total == 1) {
+        return {
+            total: count,
+            data: result
+        }
+    } else {
+        return result
+    }
 }
 
 module.exports = {

@@ -1,5 +1,5 @@
 <template>
-  <el-container style="height:100%">
+  <el-container style="height:100%;">
     <el-header class="header">
       <el-row style="margin:0;">
         <el-col :span="12" class="logo">
@@ -74,7 +74,9 @@
         </el-col>
       </el-row>
     </el-header>
-    <el-container>
+    <!-- 滚动条 -->
+    <el-container style="height:100%;
+  overflow-y: auto;">
       <el-aside width="200px">
         <el-menu
           style="height:100%"
@@ -227,7 +229,7 @@ export default {
         ],
       },
 
-      activeIndex:this.$route.path,
+      activeIndex: this.$route.path,
       //默认首页为home
       openMenu: [],
       menu: [
@@ -249,14 +251,14 @@ export default {
               text: "用户列表",
               path: "/list",
             },
-            {
-              text: "删除用户",
-              path: "/delete",
-            },
-            {
-              text: "修改用户",
-              path: "/edit/:id",
-            },
+            // {
+            //   text: "删除用户",
+            //   path: "/delete",
+            // },
+            // {
+            //   text: "修改用户",
+            //   path: "/edit/:id",
+            // },
             {
               text: "用户权限",
               path: "/power",
@@ -272,48 +274,48 @@ export default {
               text: "添加商品",
               path: "/add",
             },
-            {
-              text: "删除商品",
-              path: "/delete",
-            },
-            {
-              text: "批量删除",
-              path: "/deletemore",
-            },
+            // {
+            //   text: "删除商品",
+            //   path: "/delete",
+            // },
+            // {
+            //   text: "批量删除",
+            //   path: "/deletemore",
+            // },
             {
               text: "商品列表",
               path: "/list",
             },
-            {
-              text: "商品修改",
-              path: "/edit",
-            },
-            {
-              text: "商品搜索",
-              path: "/search",
-            },
-            {
-              text: "分类管理",
-              path: "/classification",
-              submenus: [
-                {
-                  text: "分类列表",
-                  path: "/list",
-                },
-                {
-                  text: "分类添加",
-                  path: "/add",
-                },
-                {
-                  text: "分类删除",
-                  path: "/delete",
-                },
-                {
-                  text: "分类修改",
-                  path: "/edit",
-                },
-              ],
-            },
+            // {
+            //   text: "商品修改",
+            //   path: "/edit",
+            // },
+            // {
+            //   text: "商品搜索",
+            //   path: "/search",
+            // },
+            // {
+            //   text: "分类管理",
+            //   path: "/classification",
+            //   submenus: [
+            //     {
+            //       text: "分类列表",
+            //       path: "/list",
+            //     },
+            //     {
+            //       text: "分类添加",
+            //       path: "/add",
+            //     },
+            //     {
+            //       text: "分类删除",
+            //       path: "/delete",
+            //     },
+            //     {
+            //       text: "分类修改",
+            //       path: "/edit",
+            //     },
+            //   ],
+            // },
           ],
         },
         {
@@ -322,12 +324,12 @@ export default {
           icon: "el-icon-s-order",
           submenu: [
             {
-              name:'orderList',
+              name: "orderList",
               text: "订单列表",
               path: "/list",
             },
             {
-              name:'orderAdd',
+              name: "orderAdd",
               text: "订单处理",
               path: "/add",
             },
@@ -468,6 +470,9 @@ body {
       }
     }
   }
+}
+.el-main {
+  height: 100%;
 }
 .is-active {
   i {

@@ -15,14 +15,19 @@ router.get('/', async (req, res) => {
     const {
         page,
         size,
-        _id
+        _id,
     } = req.query
 
     if (_id) {
+        // 查询该ID 的用户
         try {
             const data = await mongo.find('userList', {
                 _id
-            }, {})
+            }, {
+                field: {
+                    password: false // 不返回 password 字段数据
+                }
+            })
 
             res.send(sendDate({
                 data
@@ -33,13 +38,17 @@ router.get('/', async (req, res) => {
             }))
         }
     } else {
-
+        // 否则返回用户列表，并返回 数据的总数 
+        // 得到的数据格式为 data={total:4,data:[]}
         try {
             const data = await mongo.find('userList', {}, {
                 skip: (page - 1) * size,
-                limit: size
+                limit: size,
+                total: 1,
+                field: {
+                    password: false // 不返回 password 字段数据
+                }
             })
-
             res.send(sendDate({
                 data
             }))
@@ -137,14 +146,16 @@ router.post('/', async (req, res) => {
         username = "",
             password = "",
             role = "",
-            gender = ""
+            gender = "",
+            imgUrl = "uploads/haoge-1598500381948.jpg" //默认头像地址
     } = req.body
     try {
         const result = await mongo.insert('userList', {
             username,
             password,
             role,
-            gender
+            gender,
+            imgUrl,
         })
         res.send(sendDate({}))
     } catch (err) {
@@ -159,17 +170,15 @@ router.put("/edit/:_id", async (req, res) => {
         _id,
     } = req.params
     // console.log(_id)
-    // 编辑用户信息，某条不做编辑时，输入框也是存在数据的，不会出现为空的问题？
+    // 编辑用户信息，某条不做编辑时，输入框也是存在数据的，不会出现为空的问题？password在些不做更改
     const {
         username,
-        password,
         role,
         gender
     } = req.body
     // console.log(username, gender, role)
     const newdata = {
         username,
-        password,
         role,
         gender
     }
@@ -202,7 +211,7 @@ router.put("/changepsw", async (req, res) => {
         username,
         password,
     } = req.body
-    console.log("这是账号密码", username, password)
+    // console.log("这是账号密码", username, password)
     try {
         const result = await update('userList', {
             username

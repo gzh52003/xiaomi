@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
             username,
             password
         })
-        console.log("result", result);
+        // console.log("result", result);
         res.send(formatData({
             code: 1
         }))
